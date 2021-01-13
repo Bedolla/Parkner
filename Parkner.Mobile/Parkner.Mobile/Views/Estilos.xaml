@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ResourceDictionary
+    x:Class="Parkner.Mobile.Views.Estilos"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:graphics="clr-namespace:Syncfusion.XForms.Graphics;assembly=Syncfusion.Core.XForms"
+    xmlns:xForms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms">
+
+    <Color x:Key="EntryPlaceholderColor">#A0FFFFFF</Color>
+    <Color x:Key="BorderBackgroundColor">#20FFFFFF</Color>
+    <Color x:Key="GradientStartColor">#012E8B</Color>
+    <Color x:Key="GradientEndColor">#3F0041</Color>
+    <Color x:Key="GradientStart">#713d74</Color>
+    <Color x:Key="GradientEnd">#221e60</Color>
+    <Color x:Key="TwitterBlue">#55acee</Color>
+    <Color x:Key="Red">#dc4e41</Color>
+    <Color x:Key="FacebookBlue">#4267B2</Color>
+    <Color x:Key="LightGreen">#35c659</Color>
+    <Color x:Key="FacebookLogin">#3b5998</Color>
+    <Color x:Key="OrangeyYellow">#fcbc0f</Color>
+    <Color x:Key="Steel">#788396</Color>
+    <Color x:Key="Transparent">Transparent</Color>
+    <Color x:Key="Gold">#fcbc0f</Color>
+    <x:String x:Key="Cart">&#xe708;</x:String>
+    <x:String x:Key="Share">&#xe704;</x:String>
+    <x:String x:Key="Close">&#xe724;</x:String>
+    <x:String x:Key="Favourite">&#xe701;</x:String>
+    <x:String x:Key="ClearBookmark">&#xe734;</x:String>
+    <x:String x:Key="Back">&#xe709;</x:String>
+    <x:String x:Key="Call">&#xe71c;</x:String>
+    <x:String x:Key="MapPin">&#xe729;</x:String>
+    <x:String x:Key="Calender">&#xe742;</x:String>
+    <x:String x:Key="Menu">&#xe715;</x:String>
+    <x:String x:Key="Group">&#xe714;</x:String>
+    <x:String x:Key="Search">&#xe705;</x:String>
+    <x:String x:Key="Edit">&#xe727;</x:String>
+    <x:String x:Key="Delete">&#xe716;</x:String>
+    <x:String x:Key="Phone">&#xe71c;</x:String>
+
+    <x:String x:Key="DropDownButtonIcon">&#xe70b;</x:String>
+    <x:String x:Key="AvatarIcon">&#xe723;</x:String>
+    <x:String x:Key="FaceBook">&#xe70f;</x:String>
+    <x:String x:Key="Google">&#xe74d;</x:String>
+    <x:String x:Key="Twitter">&#xe749;</x:String>
+    <x:String x:Key="Rating">&#xe70c;</x:String>
+
+    <x:String x:Key="Next">&#xe71a;</x:String>
+    <x:String x:Key="Home">&#xe706;</x:String>
+    <x:String x:Key="Interests">&#xe701;</x:String>
+    <x:String x:Key="Activity">&#xe700;</x:String>
+    <x:String x:Key="Profile">&#xe70e;</x:String>
+    <x:String x:Key="Available">&#xe720;</x:String>
+    <x:String x:Key="Mail">&#xe725;</x:String>
+    <x:String x:Key="VoiceCall">&#xe71c;</x:String>
+    <x:String x:Key="Notification">&#xe700;</x:String>
+    <x:String x:Key="Help">&#xe72c;</x:String>
+
+    <Style x:Key="ProfileBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="CornerRadius" Value="24" />
+    </Style>
+
+    <Style x:Key="ProfileIconLabelStyle" TargetType="Label">
+        <Setter Property="Margin" Value="16,8" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
+
+    <!--  Common style for contact profile page icon Label  -->
+    <Style x:Key="CommonProfileIconLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
+
+    <!--  Common style for profile page Label  -->
+    <Style x:Key="ProfileLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="Margin" Value="16, 12" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+        <Setter Property="LineHeight" Value="{OnPlatform Default=-1, Android=1.5}" />
+        <Setter Property="LineBreakMode" Value="TailTruncation" />
+        <Setter Property="MaxLines" Value="2" />
+    </Style>
+
+    <!--  Common style for contact profile page Label  -->
+    <Style x:Key="CommonProfileLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="HorizontalTextAlignment" Value="Start" />
+        <Setter Property="LineHeight" Value="{OnPlatform Default=1.5, iOS=-1}" />
+    </Style>
+
+    <!--  Content pages  -->
+    <Style x:Key="ContentPageStyle" TargetType="ContentPage">
+        <Setter Property="BackgroundImageSource">
+            <OnPlatform x:TypeArguments="ImageSource">
+                <On Platform="Android" Value="LoginBackground.png" />
+                <On Platform="UWP" Value="LoginBackground" />
+            </OnPlatform>
+        </Setter>
+    </Style>
+
+    <!--  Labels  -->
+    <Style x:Key="LabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="1.25" />
+    </Style>
+
+    <!--  Entries  -->
+    <Style x:Key="EntryStyle" TargetType="control:BorderlessEntry">
+        <Setter Property="PlaceholderColor" Value="{StaticResource EntryPlaceholderColor}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="Margin" Value="15,0" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="ReturnType" Value="Done" />
+    </Style>
+
+    <!--  Buttons  -->
+    <Style x:Key="SfButtonStyle" TargetType="buttons:SfButton">
+        <!--<Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush>
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0" Color="{DynamicResource Primario}" />
+                        <graphics:SfGradientStop Offset="1" Color="{DynamicResource Primario}" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>-->
+        <Setter Property="BackgroundColor" Value="{DynamicResource Primario}" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!--  Flat buttons  -->
+    <Style x:Key="SfFlatButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Primario}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+    </Style>
+
+    <!--  Borders  -->
+    <Style x:Key="SfBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="Margin" Value="0,0,0, 10" />
+        <Setter Property="BackgroundColor" Value="{StaticResource BorderBackgroundColor}" />
+        <Setter Property="BorderColor" Value="Transparent" />
+        <Setter Property="CornerRadius" Value="2" />
+        <Setter Property="BorderWidth" Value="1" />
+    </Style>
+
+    <!--  Gradient view  -->
+    <Style x:Key="SfGradientViewStyle" TargetType="graphics:SfGradientView">
+        <Setter Property="Opacity" Value="0.82" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="BackgroundBrush">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0.0" Color="{StaticResource GradientEndColor}" />
+                        <graphics:SfGradientStop Offset="1.0" Color="{StaticResource GradientStartColor}" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="SfGradientStyle" TargetType="graphics:SfGradientView">
+        <Setter Property="Opacity" Value="1" />
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="BackgroundBrush">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <graphics:SfLinearGradientBrush.GradientStops>
+
+                        <graphics:SfGradientStop Offset="0.0" Color="{StaticResource GradientStart}" />
+                        <graphics:SfGradientStop Offset="1.0" Color="{StaticResource GradientEnd}" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+    <Style x:Key="HeaderLabelStyle" TargetType="Label">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Bold}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="LineHeight" Value="1.5" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+    </Style>
+
+    <Style x:Key="BusinessFormBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
+    </Style>
+
+    <Style x:Key="EntryTextStyle" TargetType="control:BorderlessEntry">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
+    </Style>
+
+    <Style x:Key="DatePickerStyle" TargetType="DatePicker">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-700}" />
+    </Style>
+
+    <Style x:Key="EntryTextBoxStyle" TargetType="control:BorderlessEntry">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
+        <Setter Property="Margin" Value="12,0" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <!--  Social icon SfButton  -->
+    <Style x:Key="SocialIconButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="CornerRadius" Value="22" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+    </Style>
+
+    <Style x:Key="BoxViewStyle" TargetType="BoxView">
+        <Setter Property="Color" Value="{DynamicResource Gray-200}" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <xForms:SfRatingSettings
+        x:Key="RatingSettings"
+        RatedFill="{StaticResource OrangeyYellow}"
+        RatedStroke="{StaticResource OrangeyYellow}" />
+
+    <!--  Common style for SfRating  -->
+    <Style x:Key="SfRatingStyle" TargetType="xForms:SfRating">
+        <Setter Property="ItemCount" Value="5" />
+        <Setter Property="ReadOnly" Value="True" />
+        <Setter Property="ItemSize" Value="14" />
+        <Setter Property="ItemSpacing" Value="0" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+    </Style>
+
+    <ControlTemplate x:Key="DesktopDetailTemplate">
+        <ScrollView VerticalScrollBarVisibility="Never">
+            <ContentPresenter />
+        </ScrollView>
+    </ControlTemplate>
+
+    <xForms:SfRatingSettings
+        x:Key="CommonRatingSettings"
+        RatedFill="{StaticResource Gold}"
+        RatedStroke="{StaticResource Gold}"
+        UnRatedStroke="{DynamicResource Gray-600}"
+        UnRatedStrokeWidth="1" />
+
+    <!--  Common style for SfRating  -->
+    <Style x:Key="CommonSfRatingStyle" TargetType="xForms:SfRating">
+        <Setter Property="ItemCount" Value="5" />
+        <Setter Property="ReadOnly" Value="True" />
+        <Setter Property="ItemSize" Value="13" />
+        <Setter Property="ItemSpacing" Value="1" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Start" />
+    </Style>
+
+    <!--  Common style for sfBorder  -->
+    <Style x:Key="CommonSfBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="BorderWidth" Value="{OnIdiom Default=2, Desktop=0}" />
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
+
+    <!--  Common style for Navigation bar SfButton  -->
+    <Style x:Key="NavigationBarButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="HorizontalOptions" Value="Fill" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
+
+    <!--  Common style for Navigation bar SfButton  -->
+    <Style x:Key="BookmarkIconStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
+
+    <!--  Common style for combo box style -->
+    <Style x:Key="ComboBoxStyle" TargetType="combobox:SfComboBox">
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
+        <Setter Property="TextSize" Value="14" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="ShowBorder" Value="False" />
+        <Setter Property="WatermarkColor" Value="{DynamicResource Gray-700}" />
+        <Setter Property="Margin" Value="8,3,0,-3" />
+        <Setter Property="HeightRequest" Value="40" />
+    </Style>
+
+    <!--  Common style for former border style  -->
+    <Style x:Key="FormBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="Padding" Value="12,8" />
+        <Setter Property="Margin" Value="0,8" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
+    </Style>
+
+    <!--  Common style for buttons  -->
+    <Style x:Key="SfGradientButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-SemiBold}" />
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="FontAttributes" Value="Bold" />
+        <Setter Property="VerticalTextAlignment" Value="Center" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+        <Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush>
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0" Color="{DynamicResource PrimaryColor}" />
+                        <graphics:SfGradientStop Offset="1" Color="{DynamicResource PrimaryGradient}" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Common style for search entries -->
+    <Style x:Key="SearchEntryStyle" TargetType="control:BorderlessEntry">
+        <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="ReturnType" Value="Done" />
+    </Style>
+
+    <!-- Common style for seperators -->
+    <Style x:Key="SeparatorStyle" TargetType="BoxView">
+        <Setter Property="HeightRequest" Value="1" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-200}" />
+    </Style>
+
+    <!--  Common style for Magenta buttons  -->
+    <Style
+        x:Key="MagentaButtonStyle"
+        BasedOn="{StaticResource SfButtonStyle}"
+        TargetType="buttons:SfButton">
+        <Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush>
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0" Color="{DynamicResource Primario}" />
+                        <graphics:SfGradientStop Offset="1" Color="{DynamicResource PrimarioGradiente}" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!--  Common style for book now buttons  -->
+    <Style x:Key="BookNowButtonStyle" TargetType="buttons:SfButton">
+        <Setter Property="BackgroundGradient">
+            <Setter.Value>
+                <graphics:SfLinearGradientBrush>
+                    <graphics:SfLinearGradientBrush.GradientStops>
+                        <graphics:SfGradientStop Offset="0" Color="{DynamicResource Primario}" />
+                        <graphics:SfGradientStop Offset="1" Color="{DynamicResource PrimarioGradiente}" />
+                    </graphics:SfLinearGradientBrush.GradientStops>
+                </graphics:SfLinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="TextColor" Value="{DynamicResource Gray-White}" />
+        <Setter Property="FontFamily" Value="{StaticResource Montserrat-Medium}" />
+        <Setter Property="BorderWidth" Value="0" />
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="CornerRadius" Value="16" />
+    </Style>
+
+
+    <Style x:Key="MenuIcon" TargetType="buttons:SfButton">
+        <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+        <Setter Property="FontSize" Value="18" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="BackgroundColor" Value="{StaticResource Gray-200}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+        <Setter Property="HeightRequest" Value="40" />
+        <Setter Property="WidthRequest" Value="40" />
+        <Setter Property="HorizontalOptions" Value="End" />
+    </Style>
+
+    <Style x:Key="ComboBoxBorderStyle" TargetType="border:SfBorder">
+        <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
+        <Setter Property="CornerRadius" Value="4" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+        <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
+    </Style>
+
+    <Style x:Key="RatingLabelStyle" TargetType="Label">
+        <Setter Property="TextColor" Value="{DynamicResource PrimaryColor}" />
+        <Setter Property="FontSize" Value="16" />
+        <Setter Property="VerticalOptions" Value="Center" />
+        <Setter Property="Text" Value="{StaticResource Rating}" />
+        <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+    </Style>
+
+</ResourceDictionary>

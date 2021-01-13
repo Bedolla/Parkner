@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:Parkner.Mobile.Controls;assembly=Parkner.Mobile"
+             xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+             x:Class="Parkner.Mobile.Views.ClienteEstacionamientosListarPage"
+             iOsSpecific:Page.UseSafeArea="True"
+             Title="Estacionamientos"
+             IsBusy="{Binding Ocupado}"
+             BackgroundColor="{DynamicResource Gray-100}"
+             NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.BindingContext>
+        <viewModels:ClienteEstacionamientosListarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <controls:Mapa
+                IsShowingUser="True"
+                MapType="Street"
+                Posicion="{Binding Posision}"
+                Pines="{Binding Pines}" />
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

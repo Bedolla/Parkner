@@ -1,0 +1,54 @@
+﻿<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Cajones</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row mb-2">
+                    <div class="col-sm-12 col-md-3">
+                        <div class="form-group mb-2">
+                            <Busqueda EnBusquedaCambio="BusquedaCambio" />
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <div class="form-group mb-2">
+                            <Ordenar Opciones="Opciones" Seleccionado="@PaginacionPeticion.OrdenarPor" EnOrdenCambio="OrdenCambio"></Ordenar>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <div class="form-group mb-2">
+                            <Desplegar EnCantidadCambio="CantidadCambio"></Desplegar>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-12 col-md-3">
+                        <div class="text-lg-right">
+                            <button @onclick="Crear" type="button" class="btn btn-block btn-success waves-effect waves-light"><i class="fe-user-plus mr-2"></i> Crear</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="table-responsive">
+                    <TablaCajones Cajones="Cajones"></TablaCajones>
+                </div>
+
+                <Paginacion MetaData="PaginacionMetaData" Separacion="2" PaginaSeleccionada="PaginaSeleccionada"/>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carta: Fin -->

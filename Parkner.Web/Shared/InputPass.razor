@@ -1,0 +1,15 @@
+﻿@inherits InputPassBase
+
+@if (!String.IsNullOrWhiteSpace(Label))
+{
+    <label for="@Id">@Label</label>
+}
+<div class="input-group @CssClass">
+    <input @bind="@CurrentValue" class="form-control" id="@Id" name="@Id" placeholder="@PlaceHolder" type="@(Mostrar ? "text" : "password")" autocomplete="on" @bind:event="oninput"/>
+    <div class="input-group-append" @onclick="() => Mostrar = !Mostrar">
+        <div class="input-group-text">
+            <i class="@(Mostrar ? "fe-eye-off" : "fe-eye")"></i>
+        </div>
+    </div>
+</div>
+<ValidationMessage For="@ValidationFor"/>

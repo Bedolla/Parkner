@@ -1,0 +1,84 @@
+﻿@page  "/responsables/estacionamientos/reservas/crear"
+@using Parkner.Data.Entities
+
+<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">Parkner</li>
+                    <li class="breadcrumb-item">Responsables</li>
+                    <li class="breadcrumb-item">Estacionamientos</li>
+                    <li class="breadcrumb-item">Reservas</li>
+                    <li class="breadcrumb-item active">Crear</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Crear reserva</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <EditForm Model="@Modelo" OnValidSubmit="Enviar" Context="c">
+                    <DataAnnotationsValidator/>
+
+                    <div class="form-group mb-3">
+                        <label for="inicio">Inicio</label>
+                        <DateEdit TValue="DateTime" @bind-Date="@Modelo.Inicio" class="form-control" id="inicio"/>
+                        <ValidationMessage For="@(() => Modelo.Inicio)"/>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="inicioHora">Inicio hora</label>
+                        <TimeEdit TValue="TimeSpan" @bind-Time="@Modelo.InicioT" Placeholder="Hora de fin" id="inicioHora" Class="form-control"/>
+                        <ValidationMessage For="@(() => Modelo.InicioT)"/>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="fin">Fin</label>
+                        <DateEdit TValue="DateTime" @bind-Date="@Modelo.Fin" class="form-control" id="fin"/>
+                        <ValidationMessage For="@(() => Modelo.Fin)"/>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="finHora">Fin hora</label>
+                        <TimeEdit TValue="TimeSpan" @bind-Time="@Modelo.FinT" Placeholder="Hora de fin" id="finHora" Class="form-control"/>
+                        <ValidationMessage For="@(() => Modelo.FinT)"/>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="clientes">Clientes</label>
+                        <Select TValue="string" @bind-SelectedValue="@Modelo.ClienteSeleccionado" class="form-control" id="clientes">
+                            @if (Modelo.Clientes?.Count > 0)
+                            {
+                                @foreach (Cliente cliente in Modelo.Clientes)
+                                {
+                                    <SelectItem Value="@cliente.Id">@cliente.Nombre @cliente.Apellido</SelectItem>                                }
+                            }
+                        </Select>
+                        <ValidationMessage For="@(() => Modelo.ClienteSeleccionado)"/>
+                    </div>
+
+                    <div class="form-group mb-0 text-center">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-1 mb-sm-1 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-danger mr-md-1 mr-lg-1 mr-xl-1" type="reset" @onclick="Cancelar"> Cancelar </button>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-success ml-md-1 ml-lg-1 ml-xl-1" type="submit"> Crear </button>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+
+            </div>
+        </div>
+    </div>
+</div>

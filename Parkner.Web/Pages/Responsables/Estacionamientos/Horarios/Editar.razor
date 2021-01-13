@@ -1,0 +1,76 @@
+﻿@page  "/responsables/estacionamientos/horarios/editar/{id}"
+@using Parkner.Core.Constants
+
+<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">Parkner</li>
+                    <li class="breadcrumb-item">Responsables</li>
+                    <li class="breadcrumb-item">Estacionamientos</li>
+                    <li class="breadcrumb-item">Horarios</li>
+                    <li class="breadcrumb-item active">Editar</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Edición del horario</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <EditForm Model="@Modelo" OnValidSubmit="Enviar" Context="c">
+                    <DataAnnotationsValidator/>
+
+                    <div class="form-group mb-3">
+                        <label for="dia">Día</label>
+                        <Select TValue="Dias" @bind-SelectedValue="@Modelo.Dia" class="form-control" id="dia" placeholder="Día">
+                            <SelectItem Value="@Dias.Lunes">@Dias.Lunes</SelectItem>
+                            <SelectItem Value="@Dias.Martes">@Dias.Martes</SelectItem>
+                            <SelectItem Value="@Dias.Miércoles">@Dias.Miércoles</SelectItem>
+                            <SelectItem Value="@Dias.Jueves">@Dias.Jueves</SelectItem>
+                            <SelectItem Value="@Dias.Viernes">@Dias.Viernes</SelectItem>
+                            <SelectItem Value="@Dias.Sábado">@Dias.Sábado</SelectItem>
+                            <SelectItem Value="@Dias.Domingo">@Dias.Domingo</SelectItem>
+                        </Select>
+                        <ValidationMessage For="@(() => Modelo.Dia)"/>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="inicio">Hora de inicio</label>
+                        <TimeEdit TValue="TimeSpan" @bind-Time="@Modelo.Inicio" Placeholder="Hora de inicio" id="inicio" Class="form-control"/>
+                        <ValidationMessage For="@(() => Modelo.Inicio)"/>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="fin">Hora de fin</label>
+                        <TimeEdit TValue="TimeSpan" @bind-Time="@Modelo.Fin" Placeholder="Hora de fin" id="fin" Class="form-control"/>
+                        <ValidationMessage For="@(() => Modelo.Fin)"/>
+                    </div>
+
+                    <div class="form-group mb-0 text-center">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-1 mb-sm-1 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-warning mr-md-1 mr-lg-1 mr-xl-1" type="reset" @onclick="Cancelar"> Cancelar </button>
+                            </div>
+                            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-12 col-xs-12 mb-1 mb-sm-1 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-danger mr-md-1 mr-lg-1 mr-xl-1" type="reset" @onclick="Borrar"> Borrar </button>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-success ml-md-1 ml-lg-1 ml-xl-1" type="submit"> Editar </button>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+
+            </div>
+        </div>
+    </div>
+</div>

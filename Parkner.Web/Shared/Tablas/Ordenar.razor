@@ -1,0 +1,10 @@
+﻿<select class="form-control" @onchange="OrdenCambio" id="ordenar">
+    @*<option value="-1" class="text-muted">Ordenar</option>*@
+    @if (Opciones != null)
+    {
+        @foreach (OrdenarOpciones opcion in Opciones)
+        {
+            <option value="@opcion.Valor"  selected="@opcion.Valor.Equals(Seleccionado)">@opcion.Texto</option>
+        }
+    }
+</select>

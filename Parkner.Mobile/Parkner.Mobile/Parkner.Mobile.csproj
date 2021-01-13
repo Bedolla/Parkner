@@ -1,0 +1,243 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+    <LangVersion>preview</LangVersion>
+    <UserSecretsId>7c467f07-13d7-4c03-8e86-ee8662de9b98</UserSecretsId>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Media\MonkeyFace.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Media\MonkeyFace.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="5.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Http" Version="5.0.0" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.2" />
+    <PackageReference Include="Syncfusion.Licensing" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.Buttons" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.Cards" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.Core" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.Expander" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfAutoComplete" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBadgeView" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBarcode" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfBusyIndicator" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfChart" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfComboBox" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfDataGrid" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfImageEditor" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfListView" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaps" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfMaskedEdit" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNavigationDrawer" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericTextBox" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfNumericUpDown" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPicker" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPopupLayout" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfPullToRefresh" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRating" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfRotator" Version="18.4.0.33" />
+    <PackageReference Include="Syncfusion.Xamarin.SfTabView" Version="18.4.0.33" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1821" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.8.0.1821" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Parkner.Core\Parkner.Core.csproj" />
+    <ProjectReference Include="..\..\Parkner.Data\Parkner.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controls\DateTimePicker.xaml.cs">
+      <DependentUpon>DateTimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ClienteEstacionamientosListarPage.xaml.cs">
+      <DependentUpon>ClienteEstacionamientosListarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ClienteEstacionamientosVerPage.xaml.cs">
+      <DependentUpon>ClienteEstacionamientosVerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoEditarPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoEditarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoCrearPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoCrearPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\EmpleadoRevisarPage.xaml.cs">
+      <DependentUpon>EmpleadoRevisarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoEmpleadoCrearPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoEmpleadoCrearPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoEmpleadoEditarPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoEmpleadoEditarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoCajonesCrudPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoCajonesCrudPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoHorarioCrearPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoHorarioCrearPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoHorarioEditarPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoHorarioEditarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesGananciasPage.xaml.cs">
+      <DependentUpon>ResponsablesGananciasPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientoVerPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientoVerPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\PerfilPage.xaml.cs">
+      <DependentUpon>PerfilPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReservasDetallesPage.xaml.cs">
+      <DependentUpon>ReservasDetallesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReservasHistorialPage.xaml.cs">
+      <DependentUpon>ReservasHistorialPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ReservasListarPage.xaml.cs">
+      <DependentUpon>ReservasListarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegistrarPage.xaml.cs">
+      <DependentUpon>RegistrarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\IngresarPage.xaml.cs">
+      <DependentUpon>IngresarPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\CorreoEntryControl.xaml.cs">
+      <DependentUpon>CorreoEntryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\IngresarOriginalPage.xaml.cs">
+      <DependentUpon>IngresarOriginalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\InicioPage.xaml.cs">
+      <DependentUpon>InicioPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\RegistrarOriginalPage.xaml.cs">
+      <DependentUpon>RegistrarOriginalPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Estilos.xaml.cs">
+      <DependentUpon>Estilos.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\OlvidoClavePage.xaml.cs">
+      <DependentUpon>OlvidoClavePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ResponsablesEstacionamientosListarPage.xaml.cs">
+      <DependentUpon>ResponsablesEstacionamientosListarPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Themes\LightTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CrearEditarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ClienteEstacionamientosListarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ClienteEstacionamientosVerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MapaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\MasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoEditarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoCrearPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\EmpleadoRevisarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoEmpleadoCrearPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoEmpleadoEditarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\PerfilPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoCajonesCrudPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoHorarioCrearPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientoHorarioEditarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReservasDetallesActivaPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReservasHistorialPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReservasListarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RegistrarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\CorreoEntryControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\OlvidoClavePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IngresarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Estilos.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\IngresarOriginalPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\InicioPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\LeerBorrarPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\RegistrarOriginalPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ReservasCrearPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\ResponsablesEstacionamientosListarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SalirPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,87 @@
+﻿@* ReSharper disable ArrangeRedundantParentheses *@
+
+@page  "/crear"
+@layout IndividualLayout
+
+<style>
+    body
+    {
+        background-color: #6658dd;
+        background-image: url("images/bg-pattern.png");
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+<div class="col-12 mb-5 mt-5">
+    <div class="container">
+        <div class="justify-content-center row">
+            <div class="col-lg-6 col-md-8 col-xl-5">
+                <div class="bg-pattern card">
+
+                    <div class="card-body p-4">
+
+                        <div class="m-auto text-center w-75">
+                            <span class="logo-lg">
+                                <img alt="" height="200" src="images/Logo.svg">
+                            </span>
+                        </div>
+
+                        <EditForm Model="@Modelo" OnValidSubmit="Enviar" Context="c">
+                            <DataAnnotationsValidator/>
+
+                            <div class="form-group mb-3">
+                                <label for="nombre">Nombre(s)</label>
+                                <InputText @bind-Value="Modelo.Nombre" class="form-control" id="nombre" placeholder="Nombre(s)" type="text"/>
+                                <ValidationMessage For="@(() => Modelo.Nombre)"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="apellido">Apellido(s)</label>
+                                <InputText @bind-Value="Modelo.Apellido" class="form-control" id="apellido" placeholder="Apellido(s)" type="text"/>
+                                <ValidationMessage For="@(() => Modelo.Apellido)"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="correo">Correo</label>
+                                <InputText @bind-Value="Modelo.Correo" class="form-control" id="correo" placeholder="Correo" type="email"/>
+                                <ValidationMessage For="@(() => Modelo.Correo)"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <InputPass @bind-Value="Modelo.Clave" class="@c.FieldCssClass(() => Modelo.Clave)" Label="Cotraseñá" Id="clave" PlaceHolder="Contraseña" ValidationFor="@(() => Modelo.Clave)"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <InputPass @bind-Value="Modelo.ConfirmacionClave" class="@c.FieldCssClass(() => Modelo.ConfirmacionClave)" Label="Confirmación de contraseña" Id="confirmacion" PlaceHolder="Confirmación de contraseña" ValidationFor="@(() => Modelo.ConfirmacionClave)"/>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="foto">Foto</label>
+                                <InputPhoto Id="foto" @bind-Value="Modelo.Foto" @bind-FotoMemoria="@FotoMemoria"/>
+                                <ValidationMessage For="@(() => Modelo.Foto)"/>
+                            </div>
+
+                            <div class="form-group mb-0 text-center">
+                                <button class="btn btn-block btn-success" type="submit"> Crear </button>
+                            </div>
+                        </EditForm>
+
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-12 text-center">
+                        <p class="text-white-50">
+                            <span>¿Ya tiene una cuenta? </span>
+                            <NavLink class="ml-1 text-white" href="/ingresar">
+                                <b>Ingrese</b>
+                            </NavLink>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@using Parkner.Data.Entities
+@using Parkner.Core.Constants
+
+<table class="table table-centered table-striped display w-100">
+    <thead class="thead-light">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre(s)</th>
+            <th>Apellido(s)</th>
+            <th>Correo</th>
+            @if (Empleados?.Count > 0)
+            {
+                <th style="@(Empleados.Any(e => e.Estacionamientos?.Count > 1) ? "width: 140px;" : "width: 125px;")">Acciones</th>
+            }
+            else
+            {
+                <th style="width: 125px;">Acciones</th>
+            }
+
+        </tr>
+    </thead>
+    <tbody>
+        @if (Empleados?.Count > 0)
+        {
+            @foreach (Empleado empleado in Empleados)
+            {
+                <tr>
+                    <td><img src="@($"{Uris.Fotos}{empleado.Foto}")" alt="Foto" style="width: 50px;"/></td>
+                    <td>@empleado.Nombre</td>
+                    <td>@empleado.Apellido</td>
+                    <td>@empleado.Correo</td>
+                    <td>
+                        <a href="@($"/responsables/estacionamientos/empleados/ver/{empleado.Id}")" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                        <a href="@($"/responsables/estacionamientos/empleados/editar/{empleado.Id}")" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="@($"/responsables/estacionamientos/empleados/borrar/{empleado.Id}")" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                        @if (empleado.Estacionamientos?.Count > 1)
+                        {
+                            <a href="@($"/responsables/estacionamientos/empleados/quitar/{empleado.Id}")" class="action-icon"> <i class="mdi mdi-account-arrow-right"></i></a>
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

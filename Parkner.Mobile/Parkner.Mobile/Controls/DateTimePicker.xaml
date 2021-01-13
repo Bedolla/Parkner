@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:controls="clr-namespace:Parkner.Mobile.Controls;assembly=Parkner.Mobile"
+             xmlns:converters="clr-namespace:Parkner.Mobile.Converters;assembly=Parkner.Mobile"
+             x:Class="Parkner.Mobile.Controls.DateTimePicker">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:BooleanToColorConverter x:Key="ColorConverter" />
+            <Style x:Key="BusinessFormBorderStyle" TargetType="border:SfBorder">
+                <Setter Property="BorderColor" Value="{DynamicResource Gray-300}" />
+                <Setter Property="CornerRadius" Value="4" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
+            </Style>
+            <Style x:Key="EntryTextBoxStyle" TargetType="controls:BorderlessEntry">
+                <Setter Property="FontFamily" Value="{StaticResource Montserrat-Regular}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="TextColor" Value="{DynamicResource Gray-900}" />
+                <Setter Property="PlaceholderColor" Value="{DynamicResource Gray-700}" />
+                <Setter Property="Margin" Value="12,0" />
+                <Setter Property="HeightRequest" Value="40" />
+            </Style>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <StackLayout>
+        <border:SfBorder
+            BorderColor="{Binding Source={x:Reference Entrada}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+            Style="{StaticResource BusinessFormBorderStyle}">
+            <controls:BorderlessEntry
+                x:Name="Entrada"
+                Placeholder="Seleccione una fecha"
+                Style="{StaticResource EntryTextBoxStyle}" />
+        </border:SfBorder>
+        <!--<Entry x:Name="Entrada" />-->
+        <DatePicker x:Name="SelectorFecha" IsVisible="False" />
+        <TimePicker x:Name="SelectorHora" IsVisible="False" Format="hh:mm:tt" />
+    </StackLayout>
+
+</ContentView>

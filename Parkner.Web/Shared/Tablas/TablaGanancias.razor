@@ -1,0 +1,27 @@
+﻿@using Parkner.Data.Entities
+
+<table class="table table-centered table-striped display w-100">
+    <thead class="thead-light">
+        <tr>
+            <th>Fecha</th>
+            <th>Cantidad</th>
+            <th style="width: 125px;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Ganancias?.Count > 0)
+        {
+            @foreach (Ganancia ganancia in Ganancias)
+            {
+                <tr>
+                    <td>@ganancia.Fecha.ToString("d")</td>
+                    <td>@ganancia.Cantidad.ToString("C0")</td>
+                    <td>
+                        <a href="@($"/responsables/ganancias/editar/{ganancia.Id}")" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="@($"/responsables/ganancias/borrar/{ganancia.Id}")" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,211 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.ResponsablesEstacionamientosListarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:listView="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:converters="clr-namespace:Parkner.Mobile.Converters;assembly=Parkner.Mobile"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    xmlns:helpers="clr-namespace:Parkner.Mobile.Helpers;assembly=Parkner.Mobile"
+    xmlns:xForms="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    x:Name="EstacionamientosPage"
+    Title="Estacionamientos"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:ResponsablesEstacionamientosListarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <buttons:SfButton
+                Grid.Row="1" 
+                Command="{Binding CrearCommand}"
+                Margin="8,8,8,8"
+                Style="{StaticResource SfButtonStyle}"
+                HasShadow="True"
+                Text="Crear"
+                WidthRequest="200" />
+
+            <listView:SfListView
+                Grid.Row="0" 
+                AutoFitMode="Height"
+                HorizontalOptions="FillAndExpand"
+                IsStickyHeader="False"
+                ItemSize="170"
+                ItemSpacing="8,8,8,0"
+                BackgroundColor="White"
+                ItemsSource="{Binding Estacionamientos}"
+                TapCommand="{Binding TapCommand}"
+                Style="{StaticResource SfListViewStyle}">
+
+                <listView:SfListView.Behaviors>
+                    <behaviors:SfListViewTapBehavior Command="{Binding Path=BindingContext.ItemSelectedCommand, Source={x:Reference EstacionamientosPage}}" />
+                </listView:SfListView.Behaviors>
+
+                <listView:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid x:Name="productListTemplate" BackgroundColor="{StaticResource Gray-100}">
+
+                            <Grid.Resources>
+                                <ResourceDictionary>
+                                    <ResourceDictionary.MergedDictionaries>
+                                        <ResourceDictionary Source="Estilos.xaml" />
+                                    </ResourceDictionary.MergedDictionaries>
+                                    <converters:BooleanToStringConverter x:Key="boolToStringConverter" />
+                                    <converters:BooleanToColorConverter x:Key="boolToColorConverter" />
+                                    <converters:IntToThicknessConverter x:Key="intToThicknessConverter" />
+                                </ResourceDictionary>
+                            </Grid.Resources>
+
+                            <Grid
+                                Margin="0,0,0,8"
+                                ColumnSpacing="0"
+                                HorizontalOptions="FillAndExpand"
+                                RowSpacing="0"
+                                VerticalOptions="FillAndExpand">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="{OnIdiom Default=Auto, Desktop=0.2*}" />
+                                    <ColumnDefinition Width="{OnIdiom Default=*, Desktop=*}" />
+                                    <ColumnDefinition Width="32" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image
+                                    Grid.Row="0"
+                                    Grid.Column="0"
+                                    Grid.RowSpan="4"
+                                    Margin="8,0,16,0"
+                                    Aspect="Fill"
+                                    BackgroundColor="{DynamicResource Gray-100}"
+                                    HeightRequest="{OnIdiom Default=150,
+                                    Desktop=120}"
+                                    WidthRequest="{OnIdiom Default=140,
+                                   Desktop=200}">
+                                    <Image.Source>
+                                        <UriImageSource
+                                            CachingEnabled="False"
+                                            Uri="{Binding Foto}" />
+                                    </Image.Source>
+                                </Image>
+
+                                <Label
+                                    Grid.Row="0"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,8"
+                                    FontFamily="{StaticResource Montserrat-SemiBold}"
+                                    LineBreakMode="TailTruncation"
+                                    MaxLines="1"
+                                    Style="{StaticResource LabelStyle}"
+                                    Text="{Binding Nombre}"
+                                    TextColor="{DynamicResource Gray-900}" />
+
+                                <Button
+                                    Grid.Row="0"
+                                    Grid.Column="2"
+                                    Margin="0,0,0,8"
+                                    Padding="0"
+                                    helpers:RTLHelper.Margin="{OnIdiom Phone='0,0,0,0',
+                                              Tablet='0,0,4,0',
+                                              Desktop='0,0,8,0'}"
+                                    Command="{Binding BindingContext.ConcurridoCommand, Source={x:Reference productListTemplate}}"
+                                    CommandParameter="{Binding}"
+                                    Style="{StaticResource FavouriteButtonStyle}"
+                                    Text="{Binding Concurrido, Converter={StaticResource boolToStringConverter}, ConverterParameter=1}"
+                                    TextColor="{Binding Concurrido, Converter={StaticResource boolToColorConverter}, ConverterParameter=4}" />
+
+                                <Label
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,8"
+                                    FontFamily="{StaticResource Montserrat-Medium}"
+                                    FontSize="12"
+                                    LineBreakMode="TailTruncation"
+                                    LineHeight="{OnPlatform Android=1.25,
+                                    Default=-1}"
+                                    MaxLines="2"
+                                    Style="{StaticResource LabelStyle}"
+                                    TextColor="{StaticResource Gray-700}"
+                                    Text="{Binding Direccion.Calle}" />
+
+                                <StackLayout
+                                    Grid.Row="2"
+                                    Grid.Column="1"
+                                    Margin="0,0,0,16"
+                                    Orientation="Horizontal"
+                                    Spacing="2">
+
+                                    <Label
+                                        FontFamily="{StaticResource Montserrat-SemiBold}"
+                                        FontSize="20"
+                                        HorizontalOptions="Start"
+                                        LineHeight="{OnPlatform Android=1.25,
+                                        Default=-1}"
+                                        Style="{StaticResource LabelStyle}"
+                                        Text="{Binding Costo, StringFormat='${0:0 }'}"
+                                        TextColor="{DynamicResource PrimaryColor}"
+                                        VerticalOptions="CenterAndExpand"
+                                        VerticalTextAlignment="Center" />
+
+                                    <Label
+                                        Margin="0,6,0,6"
+                                        FontFamily="{StaticResource Montserrat-Medium}"
+                                        FontSize="14"
+                                        HorizontalOptions="Start"
+                                        Style="{StaticResource LabelStyle}"
+                                        TextColor="{StaticResource Gray-700}"
+                                        Text="por hora"
+                                        VerticalOptions="Center"
+                                        VerticalTextAlignment="Center" />
+
+                                </StackLayout>
+
+                                <xForms:SfRating
+                                    Grid.Row="3"
+                                    Grid.Column="1"
+                                    RatingSettings="{StaticResource RatingSettings}"
+                                    Style="{StaticResource SfRatingStyle}"
+                                    Value="{Binding Calificacion}" />
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </listView:SfListView.ItemTemplate>
+
+            </listView:SfListView>
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

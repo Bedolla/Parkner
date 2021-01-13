@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                  xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+                  xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+                  xmlns:avatarView="clr-namespace:Syncfusion.XForms.AvatarView;assembly=Syncfusion.Core.XForms"
+                  iOsSpecific:Page.UseSafeArea="true"
+                  MasterBehavior="Popover"
+                  x:Class="Parkner.Mobile.Views.InicioPage">
+
+    <MasterDetailPage.BindingContext>
+        <viewModels:InicioViewModel />
+    </MasterDetailPage.BindingContext>
+
+    <MasterDetailPage.Master>
+
+        <ContentPage BackgroundColor="{StaticResource Gris}" Title="Menú" IconImageSource="{Binding IconoMenu}">
+
+            <StackLayout Orientation="Vertical">
+
+                <ListView x:Name="ListViewVistas"
+                          RowHeight="60"
+                          SeparatorVisibility="None"
+                          BackgroundColor="#F9FFFF"
+                          ItemsSource="{Binding Menu}"
+                          ItemSelected="ItemSeleccionado">
+
+                    <ListView.Header>
+                        <Grid
+                            BackgroundColor="{StaticResource Primario}">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="5" />
+                                <RowDefinition Height="90" />
+                                <RowDefinition Height="55" />
+                                <RowDefinition Height="25" />
+                                <RowDefinition Height="5" />
+                            </Grid.RowDefinitions>
+
+                            <avatarView:SfAvatarView
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                ContentType="Default"
+                                BorderColor="{StaticResource Texto}"
+                                VerticalOptions="Center"
+                                HorizontalOptions="Center"
+                                HeightRequest="110"
+                                WidthRequest="110"
+                                CornerRadius="50">
+                                <avatarView:SfAvatarView.ImageSource>
+                                    <UriImageSource
+                                        CachingEnabled="False"
+                                        Uri="{Binding Avatar}" />
+                                </avatarView:SfAvatarView.ImageSource>
+                            </avatarView:SfAvatarView>
+
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                HeightRequest="120"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{Binding Nombre}"
+                                FontSize="21"
+                                TextColor="{StaticResource Texto}" />
+
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                HeightRequest="120"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand"
+                                Text="{Binding Correo}"
+                                FontSize="18"
+                                TextColor="{StaticResource Texto}" />
+
+                        </Grid>
+                    </ListView.Header>
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <StackLayout VerticalOptions="FillAndExpand"
+                                             Orientation="Horizontal"
+                                             Padding="20,10,0,10"
+                                             Spacing="20">
+
+                                    <Label Text="{Binding Icono}"
+                                           FontFamily="{StaticResource FontAwesomeSolid}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           TextColor="{StaticResource TextoObscuro}" />
+
+                                    <Label Text="{Binding Titulo}"
+                                           FontSize="Medium"
+                                           VerticalOptions="Center"
+                                           TextColor="{StaticResource TextoObscuro}" />
+                                </StackLayout>
+
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackLayout>
+
+        </ContentPage>
+
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <NavigationPage>
+            <x:Arguments>
+
+                <ContentPage Title="Estacionamientos" />
+
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

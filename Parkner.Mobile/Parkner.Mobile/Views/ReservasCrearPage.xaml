@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:controls="clr-namespace:Parkner.Mobile.Controls;assembly=Parkner.Mobile"
+             xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+             xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+             BackgroundColor="{DynamicResource Gray-100}" 
+             Title="Crear reserva"
+             x:Class="Parkner.Mobile.Views.ReservasCrearPage">
+
+    <ContentPage.BindingContext>
+        <viewModels:ReservasCrearViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <StackLayout Spacing="0" Padding="16,24" VerticalOptions="Start">
+
+            <Label
+                FontFamily="{StaticResource Montserrat-Medium}"
+                Margin="0,0,0,4"
+                HeightRequest="18"
+                FontSize="12"
+                Text="Fecha de inicio"
+                TextColor="{DynamicResource Gray-800}" />
+
+            <controls:DateTimePicker FechaHora="{Binding Inicio}" />
+
+            <Label
+                FontFamily="{StaticResource Montserrat-Medium}"
+                Margin="0,0,0,4"
+                HeightRequest="18"
+                FontSize="12"
+                Text="Fecha de fin"
+                TextColor="{DynamicResource Gray-800}" />
+
+            <controls:DateTimePicker FechaHora="{Binding Fin}" />
+
+            <buttons:SfButton
+                Command="{Binding CrearCommand}"
+                HorizontalOptions="Center"
+                Margin="0,24,0,0"
+                Style="{StaticResource SfButtonStyle}"
+                Text="Crear"
+                WidthRequest="200" />
+
+        </StackLayout>
+    </ContentPage.Content>
+
+</ContentPage>

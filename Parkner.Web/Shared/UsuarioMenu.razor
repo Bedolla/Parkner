@@ -1,0 +1,27 @@
+﻿@using Parkner.Core.Constants
+
+<li class="dropdown notification-list">
+    <a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
+        <img src="@($"{Uris.Fotos}{UsuarioState.Foto}")" alt="Foto" class="rounded-circle">
+        <span class="pro-user-name ml-1">
+            @($"{UsuarioState.Nombre} {UsuarioState.Apellido}")
+        </span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+
+        <!-- item-->
+        <a href="@($"/perfil/{UsuarioState.Id}")" class="dropdown-item notify-item">
+            <i class="fe-user"></i>
+            <span>Perfil</span>
+        </a>
+
+        <div class="dropdown-divider"></div>
+
+        <!-- Salir -->
+        <NavLink class="dropdown-item notify-item" href="/salir">
+            <i class="fe-log-out"></i>
+            <span>Salir</span>
+        </NavLink>
+
+    </div>
+</li>

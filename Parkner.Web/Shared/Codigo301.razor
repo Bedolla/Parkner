@@ -1,0 +1,19 @@
+﻿@inject NavigationManager AdministradorDeNavegacion
+
+@code
+{
+    [CascadingParameter]
+    private Task<AuthenticationState> EstadoDeAutenticacion { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        AuthenticationState estadoDeAutenticacion = await EstadoDeAutenticacion;
+
+        if (estadoDeAutenticacion?.User?.Identity is null || !estadoDeAutenticacion.User.Identity.IsAuthenticated)
+        {
+            string regresarA = AdministradorDeNavegacion.ToBaseRelativePath(AdministradorDeNavegacion.Uri);
+
+            AdministradorDeNavegacion.NavigateTo(String.IsNullOrWhiteSpace(regresarA) ? "ingresar" : $"ingresar?regresar={regresarA}", true);
+        }
+    }
+}

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+             iOsSpecific:Page.UseSafeArea="true"
+             x:Class="Parkner.Mobile.Views.LeerBorrarPage"
+             Title="Usuarios"
+             x:Name="Pagina">
+
+    <ContentPage.BindingContext>
+        <viewModels:LeerBorrarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="EtiquetaInfromacion" TargetType="Label">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid Margin="10">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="8*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <SearchBar Grid.Row="0"
+                       Placeholder="Búsqueda de usuarios"
+                       Text="{Binding Buscado}"
+                       SearchCommand="{Binding BuscarCommand}"
+                       SearchCommandParameter="{Binding Buscado}" />
+
+            <ListView Grid.Row="1"
+                      HasUnevenRows="True"
+                      IsPullToRefreshEnabled="False"
+                      ItemsSource="{Binding Usuarios}"
+                      SelectedItem="{Binding Seleccionado}">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+
+                            <ViewCell.ContextActions>
+                                <MenuItem Text="Editar"
+                                          Command="{Binding Source={x:Reference Pagina}, Path=LeerBorrarViewModel.EditarCommand}"
+                                          CommandParameter="{Binding .}" />
+                                <MenuItem Text="Borrar"
+                                          Command="{Binding Source={x:Reference Pagina}, Path=LeerBorrarViewModel.BorrarCommand}"
+                                          CommandParameter="{Binding .}"
+                                          IsDestructive="True" />
+                            </ViewCell.ContextActions>
+
+                            <Grid>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8*" />
+                                    <ColumnDefinition Width="1.2*" />
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="0"
+                                             Style="{StaticResource Datos}">
+
+                                    <StackLayout Style="{StaticResource PropiedadDatos}">
+                                        <Label Text="Nombre(s): " />
+                                        <Label Text="{Binding Nombre}"
+                                               Style="{StaticResource EtiquetasDatos}" />
+                                    </StackLayout>
+
+                                    <StackLayout Style="{StaticResource PropiedadDatos}">
+                                        <Label Text="Apellido(s): " />
+                                        <Label Text="{Binding Apellido}"
+                                               Style="{StaticResource EtiquetasDatos}" />
+                                    </StackLayout>
+
+                                    <StackLayout Style="{StaticResource PropiedadDatos}">
+                                        <Label Text="Correo: " />
+                                        <Label Text="{Binding Correo}"
+                                               Style="{StaticResource EtiquetasDatos}" />
+                                    </StackLayout>
+
+                                </StackLayout>
+
+                                <!--<Button Grid.Column="1"
+                                        FontFamily="{StaticResource FontAwesomeSolid}"
+                                        Text="{x:Static helpers:FontAwesomeIcons.Trash}"
+                                        Style="{StaticResource BotonBorrar}"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:LeerBorrarViewModel}}, Path=BorrarCommand}"
+                                        CommandParameter="{Binding .}" />-->
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Label Grid.Row="2"
+                   Text="{Binding Informacion}"
+                   Style="{StaticResource EtiquetaInfromacion}" />
+
+            <Button Grid.Row="3"
+                    Text="Agregar"
+                    Style="{StaticResource BotonAgregar}"
+                    Command="{Binding AgregarCommand}" />
+
+        </Grid>
+    </ContentPage.Content>
+
+</ContentPage>

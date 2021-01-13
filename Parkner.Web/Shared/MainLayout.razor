@@ -1,0 +1,113 @@
+﻿@inherits LayoutComponentBase
+
+<AuthorizeView>
+    <Authorized>
+
+        <!-- Pagina : Inicio -->
+        <div id="wrapper">
+
+            <!-- Barra Superior : Inicio -->
+            <div class="navbar-custom">
+                <div class="container-fluid">
+                    <ul class="list-unstyled topnav-menu float-right mb-0">
+
+                        <li class="dropdown d-none d-lg-inline-block">
+                            <a class="nav-link dropdown-toggle waves-effect waves-light" data-toggle="fullscreen" href="#">
+                                <i class="fe-maximize noti-icon"></i>
+                            </a>
+                        </li>
+
+                        <UsuarioMenu></UsuarioMenu>
+
+                    </ul>
+
+                    <!-- Logotipo : Inicio -->
+                    <div class="logo-box">
+                        <span class="logo logo-light text-center">
+                            <span class="logo-sm">
+                                <img src="images/Logo.svg" alt="Logo" height="66">
+                            </span>
+                            <span class="logo-lg">
+                                <img src="images/Logo.svg" alt="Logo" height="66">
+                                <span class="logo-lg-texto">arkner</span>
+                            </span>
+                        </span>
+                    </div>
+                    <!-- Logotipo : Fin -->
+
+                    <ul class="list-unstyled topnav-menu m-0">
+                        <li>
+                            <button class="button-menu-mobile waves-effect waves-light">
+                                <i class="fe-menu"></i>
+                            </button>
+                        </li>
+
+                        <li>
+                            <!-- Menu Móvil : Inicio -->
+                            <a class="navbar-toggle nav-link" data-toggle="collapse" data-target="#topnav-menu-content">
+                                <div class="lines">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </a>
+                            <!-- Menu Móvil : Fin -->
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+            <!-- Barra Superior : Fin -->
+
+            <!-- Menú Lateral Izquierdo : Inicio -->
+            <div class="left-side-menu">
+                <div class="h-100" data-simplebar>
+
+                    <UsuarioCaja></UsuarioCaja>
+
+                    <MenuLateral></MenuLateral>
+
+                    <div class="clearfix"></div>
+
+                </div>
+            </div>
+            <!-- Menú Lateral Izquierdo : Fin -->
+            <!-- Contenido : Inicio -->
+            <div class="content-page">
+
+                <!-- Hoja : Inicio-->
+                <div class="content">
+                    <div class="container-fluid">
+
+                        @Body
+
+                    </div>
+                </div>
+                <!-- Hoja : Inicio-->
+                <!-- Pie : Inicio -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                2020 &copy; Parkner por <a href="https://www.pichancha.com">Pichancha Collective</a>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="text-md-right footer-links d-none d-sm-block">
+                                    <a href="javascript:void(0);">Contáctanos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- Pie : Fin -->
+
+            </div>
+            <!-- Contenido : Fin -->
+
+        </div>
+        <!-- Pagina : Fin -->
+    </Authorized>
+    <NotAuthorized>
+        @Body
+    </NotAuthorized>
+</AuthorizeView>

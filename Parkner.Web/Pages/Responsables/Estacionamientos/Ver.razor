@@ -1,0 +1,103 @@
+﻿@page  "/responsables/estacionamientos/ver/{id}"
+@using Parkner.Data.Entities
+@using Parkner.Core.Constants
+
+<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">Parkner</li>
+                    <li class="breadcrumb-item">Responsables</li>
+                    <li class="breadcrumb-item">Estacionamientos</li>
+                    <li class="breadcrumb-item active">Ver</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Detalles de @Modelo.Nombre</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card-box ribbon-box">
+
+            <div class="mano ribbon ribbon-primary float-left" @onclick="Cancelar"><i class="text-white mdi mdi-arrow-left-bold mr-1"></i> Regresar</div>
+
+            <div class="card-body mt-3 row pl-0">
+
+                <div class="col-sm-12 col-xl-4 text-left mb-3">
+                    <h3>Dirección</h3>
+                    <p class="mb-0"><strong class="bold">Número </strong><span class="text-muted">@Modelo.Numero</span></p>
+                    <p class="mb-0"><strong class="bold">Calle </strong><span class="text-muted">@Modelo.Calle</span></p>
+                    <p class="mb-0"><strong class="bold">Entre calles </strong><span class="text-muted">@Modelo.EntreCalles</span></p>
+                    <p class="mb-0"><strong class="bold">Colonia </strong><span class="text-muted">@Modelo.Colonia</span></p>
+                    <p class="mb-0"><strong class="bold">Código postal </strong><span class="text-muted">@Modelo.CodigoPostal</span></p>
+                    <p class="mb-0"><strong class="bold">Municipio </strong><span class="text-muted">@Modelo.Municipio</span></p>
+
+                    <p class="mb-0 mt-2"><span class="text-muted">@Modelo.Cajones.ToString("N0")</span><strong class="bold"> de @Modelo.CajonesTotales.ToString("N0") cajones disponibles</strong></p>
+                </div>
+
+                <div class="col-sm-12 col-xl-4 text-center mb-3">
+                    <img src="@($"{Uris.Fotos}{Modelo.Foto}")" class="rounded avatar-xxl img-thumbnail" alt="Foto">
+                    <h4 class="mb-0">@Modelo.Nombre</h4>
+                    <p class="mb-0"><strong class="bold">Descripción </strong><span class="text-muted">@Modelo.Descripcion</span></p>
+                    <p class="mb-0"><strong class="bold">Tipo </strong><span class="text-muted">@Modelo.Tipo</span></p>
+                    <p class="mb-0"><strong class="bold">Costo por hora </strong><span class="text-muted">@Modelo.Costo.ToString("C0")</span></p>
+                    <p class="mb-0"><strong class="bold">Concurrido </strong><span class="text-muted">@(Modelo.Concurrido ? "Sí" : "No")</span></p>
+                    <p class="mb-0"><strong class="strong">Miembro desde </strong><span class="text-muted">@Modelo.Creacion.Date.Year</span></p>
+                    <div class="text-warning font-13">
+                        @if (Modelo.Calificacion != null)
+                        {
+                            for (int i = 0; i < Modelo.Calificacion; i++)
+                            {
+                                <i class="fa fa-star text-warning mb-2 font-13"></i>
+                            }
+                            for (int i = 0; i < (5 - Modelo.Calificacion); i++)
+                            {
+                                <i class="fa fa-star text-muted mb-2 font-13"></i>
+                            }
+                        }
+                        else
+                        {
+                            Modelo.Calificacion = 0;
+
+                            for (int i = 0; i < Modelo.Calificacion; i++)
+                            {
+                                <i class="fa fa-star text-warning mb-2 font-13"></i>
+                            }
+                            for (int i = 0; i < (5 - Modelo.Calificacion); i++)
+                            {
+                                <i class="fa fa-star text-muted mb-2 font-13"></i>
+                            }
+                        }
+                    </div>
+                </div>
+
+                <div class="col-sm-12 col-xl-4 text-right mb-3">
+                    <h3>Horarios</h3>
+                    @foreach (Horario horario in Modelo.Horarios.OrderBy(h => h.DiaNumero).ThenBy(h => h.Inicio).ThenBy(h => h.Fin))
+                    {
+                        <p class="mb-0">
+                            <strong class="bold">@horario.Dia </strong><span class="text-muted"> de @horario.Inicio.ToString("hh:mm tt") a @horario.Fin.ToString("hh:mm tt") </span>
+                            <a href="@($"/responsables/estacionamientos/horarios/editar/{horario.Id}")" class="action-icon"> <i class="text-warning mdi mdi-square-edit-outline"></i></a>
+                        </p>
+                    }
+                    <button @onclick="CrearHorario" type="button" class="btn btn-success waves-effect waves-light mt-2"><i class="fas fa-calendar-plus"></i></button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Carta: Fin -->
+
+<Parkner.Web.Pages.Responsables.Estacionamientos.Cajones.Listar></Parkner.Web.Pages.Responsables.Estacionamientos.Cajones.Listar>
+
+<Parkner.Web.Pages.Responsables.Estacionamientos.Reservas.Listar></Parkner.Web.Pages.Responsables.Estacionamientos.Reservas.Listar>
+
+<Parkner.Web.Pages.Responsables.Estacionamientos.Empleados.Listar></Parkner.Web.Pages.Responsables.Estacionamientos.Empleados.Listar>

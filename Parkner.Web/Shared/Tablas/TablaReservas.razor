@@ -1,0 +1,28 @@
+﻿@using Parkner.Data.Entities
+
+<table class="table table-centered table-striped display w-100">
+    <thead class="thead-light">
+        <tr>
+            <th>Inicio</th>
+            <th>Fin</th>
+            <th>Cliente</th>
+            <th style="width: 100px;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Reservas?.Count > 0)
+        {
+            @foreach (Reserva reserva in Reservas)
+            {
+                <tr>
+                    <td>@reserva.Inicio.ToString("MM/dd/yyyy hh:mm tt")</td>
+                    <td>@reserva.Fin.ToString("MM/dd/yyyy hh:mm tt")</td>
+                    <td>@reserva.Cliente.Nombre @reserva.Cliente.Apellido</td>
+                    <td style="padding-left: 33px;">
+                        <a href="@($"/responsables/estacionamientos/reservas/editar/{reserva.Id}")" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

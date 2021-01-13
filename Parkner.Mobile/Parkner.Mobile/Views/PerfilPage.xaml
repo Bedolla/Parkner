@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.PerfilPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:converter="clr-namespace:Parkner.Mobile.Converters"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:xForms="clr-namespace:Syncfusion.SfBusyIndicator.XForms;assembly=Syncfusion.SfBusyIndicator.XForms"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    iOsSpecific:Page.UseSafeArea="True"
+    Title="Perfil"
+    IsBusy="{Binding Ocupado}"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.BindingContext>
+        <viewModels:PerfilViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="{DynamicResource Gray-100}" Spacing="0"
+                         Padding="16,24">
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,0,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Nombre(s)"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference NombreEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="NombreEntry"
+                        Placeholder="Ejemplo: María Enriqueta"
+                        Text="{Binding Nombre}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Apellido(s)"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference ApellidoEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="ApellidoEntry"
+                        Placeholder="Ejemplo: Rego Rodriguez"
+                        Text="{Binding Apellido}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Correo"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference CorreoEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="CorreoEntry"
+                        Placeholder="Ejemplo: rego@ucol.mx"
+                        Text="{Binding Correo}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Contraseña"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference ClaveEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="ClaveEntry"
+                        Placeholder="Ejemplo: C!4v3S3cr3t4"
+                        Text="{Binding Clave}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Confirmar contraseña"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference ClaveConfirmarEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="ClaveConfirmarEntry"
+                        Placeholder="Ejemplo: C!4v3S3cr3t4"
+                        Text="{Binding ClaveConfirmar}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Foto"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <Grid x:Name="ContendorEditor" IsVisible="False" HeightRequest="512" Margin="0,0,0,16" />
+
+                <buttons:SfButton
+                    Margin="0, 0, 0, 20"
+                    Command="{Binding BuscarFotoCommand}"
+                    CommandParameter="{x:Reference ContendorEditor}"
+                    IsEnabled="{Binding Habilitado}"
+                    IsVisible="{Binding Habilitado}"
+                    Style="{StaticResource SfButtonStyle}"
+                    BackgroundColor="{DynamicResource AzulAndroid}"
+                    WidthRequest="128"
+                    HasShadow="True"
+                    Text="Buscar..." />
+
+                <buttons:SfButton
+                    IsEnabled="{Binding Habilitado}"
+                    IsVisible="{Binding Habilitado}"
+                    WidthRequest="128"
+                    HasShadow="True"
+                    Margin="0,24,0,0"
+                    Style="{StaticResource SfButtonStyle}"
+                    Command="{Binding EditarCommand}">
+                    <buttons:SfButton.Content>
+                        <StackLayout
+                            Orientation="Horizontal"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"
+                            Margin="2">
+                            <xForms:SfBusyIndicator
+                                ViewBoxWidth="20"
+                                ViewBoxHeight="20"
+                                AnimationType="SingleCircle"
+                                IsBusy="{Binding Ocupado}"
+                                WidthRequest="5"
+                                TextColor="White"
+                                Margin="20, 0,10, 0" />
+                            <Label
+                                Text="{Binding Actualizar}"
+                                FontSize="16"
+                                VerticalOptions="Center"
+                                FontAttributes="Bold"
+                                TextColor="White"
+                                Margin="0,0,20,0" />
+                        </StackLayout>
+                    </buttons:SfButton.Content>
+                </buttons:SfButton>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,24 @@
+﻿<div class="input-group">
+    <input type="text" class="form-control" name="@Id" value="@Value" placeholder="@(Placeholder ?? "Foto")" readonly>
+    <label class="input-group-append" style="margin-bottom: 0 !important">
+        <span class="input-group-text">
+            @if (MensajeBoton is null)
+            {
+                <i class="mdi mdi-folder-open-outline"></i>
+            }
+            else
+            {
+                <span>@MensajeBoton</span>
+            }
+            @*<InputFile OnChange="FotoSeleccionadaM"></InputFile>*@
+            <InputFile OnChange="@FotoSeleccionada" @bind-Value="Value" name="@Id" id="@Id" style="display: none;" />
+        </span>
+    </label>
+</div>
+
+@if (!String.IsNullOrWhiteSpace(FotoUri))
+{
+    <div class="form-group mb-3 mt-3 text-center">
+        <img src="@FotoUri" alt="Foto" class="img-fluid rounded" width="120"/>
+    </div>
+}

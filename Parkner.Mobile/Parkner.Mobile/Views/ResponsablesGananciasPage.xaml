@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.ResponsablesGananciasPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:xForms="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    x:Name="EstacionamientosPage"
+    Title="Ganancias"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <xForms:ChartColorCollection x:Key="Colors">
+                <Color>#6658dd</Color>
+                <Color>#1abc9c</Color>
+                <Color>#4fc6e1</Color>
+                <Color>#f7b84b</Color>
+                <Color>#f1556c</Color>
+                <Color>#1976D2</Color>
+                <Color>OrangeRed</Color>
+                <Color>Orchid</Color>
+                <Color>#34C759</Color>
+            </xForms:ChartColorCollection>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:ResponsablesGananciasViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <Grid>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <buttons:SfButton
+                Grid.Row="1" 
+                Command="{Binding ActualizarCommand}"
+                Margin="8,8,8,8"
+                Style="{StaticResource SfButtonStyle}"
+                HasShadow="True"
+                Text="Actualizar"
+                WidthRequest="200" />
+
+            <xForms:SfChart Grid.Row="0" x:Name="Chart" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+                <!--<chart:SfChart.ColorModel>
+            <chart:ChartColorModel Palette="Custom" CustomBrushes="{StaticResource Colors}"/>
+        </chart:SfChart.ColorModel>-->
+
+                <xForms:SfChart.ChartBehaviors>
+                    <xForms:ChartZoomPanBehavior ZoomMode="X" />
+                </xForms:SfChart.ChartBehaviors>
+
+                <!--<xForms:SfChart.BindingContext>
+                    <GraficaViewModel />
+                </xForms:SfChart.BindingContext>-->
+
+                <!--<xForms:SfChart.Legend>
+                    <xForms:ChartLegend />
+                </xForms:SfChart.Legend>-->
+
+                <!--<xForms:SfChart.Title>
+                    <xForms:ChartTitle Text="Ganancias" />
+                </xForms:SfChart.Title>-->
+
+                <xForms:SfChart.PrimaryAxis>
+                    <xForms:DateTimeCategoryAxis Interval="1" IntervalType="Months">
+
+                        <xForms:DateTimeCategoryAxis.LabelStyle>
+                            <xForms:ChartAxisLabelStyle LabelFormat="MMM" />
+                        </xForms:DateTimeCategoryAxis.LabelStyle>
+                        <xForms:DateTimeCategoryAxis.Title>
+                            <xForms:ChartAxisTitle Text="Fecha" />
+                        </xForms:DateTimeCategoryAxis.Title>
+                    </xForms:DateTimeCategoryAxis>
+                </xForms:SfChart.PrimaryAxis>
+
+                <xForms:SfChart.SecondaryAxis>
+                    <xForms:NumericalAxis>
+                        <xForms:NumericalAxis.LabelStyle>
+                            <xForms:ChartAxisLabelStyle LabelFormat="###,###" />
+                        </xForms:NumericalAxis.LabelStyle>
+
+                        <xForms:NumericalAxis.Title>
+                            <xForms:ChartAxisTitle Text="Cantidad" />
+                        </xForms:NumericalAxis.Title>
+                    </xForms:NumericalAxis>
+                </xForms:SfChart.SecondaryAxis>
+
+                <xForms:SfChart.Series>
+                    <xForms:ColumnSeries ItemsSource="{Binding Ganancias}"
+                                Label="Últimos 12 meses"
+                                XBindingPath="Fecha"
+                                YBindingPath="Cantidad" EnableTooltip="True">
+
+                        <xForms:ColumnSeries.ColorModel>
+                            <xForms:ChartColorModel Palette="Custom" CustomBrushes="{StaticResource Colors}" />
+                            <!--<chart:ChartColorModel Palette="Metro"/>-->
+                        </xForms:ColumnSeries.ColorModel>
+
+
+                        <xForms:ColumnSeries.DataMarker>
+                            <xForms:ChartDataMarker ShowLabel="True" ShowMarker="False">
+
+                                <xForms:ChartDataMarker.LabelStyle>
+                                    <xForms:DataMarkerLabelStyle LabelFormat="$###,###"/>
+                                </xForms:ChartDataMarker.LabelStyle>
+
+                            </xForms:ChartDataMarker>
+                        </xForms:ColumnSeries.DataMarker>
+                    </xForms:ColumnSeries>
+                </xForms:SfChart.Series>
+            </xForms:SfChart>
+
+
+        </Grid>
+
+    </ContentPage.Content>
+
+</ContentPage>

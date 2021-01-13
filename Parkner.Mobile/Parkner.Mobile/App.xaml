@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+             x:Class="Parkner.Mobile.App">
+
+    <Application.Resources>
+
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Themes/LightTheme.xaml" />
+                <ResourceDictionary Source="Views/Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+            <Color x:Key="Primario">#6658dd</Color>
+            <Color x:Key="PrimarioGradiente">#6658AF</Color>
+            <Color x:Key="Secundario">#6c757d</Color>
+            <Color x:Key="Satisfactorio">#1abc9c</Color>
+            <Color x:Key="Informacion">#4fc6e1</Color>
+            <Color x:Key="Advertencia">#f7b84b</Color>
+            <Color x:Key="Peligro">#f1556c</Color>
+            <Color x:Key="Claro">#eceff1</Color>
+            <Color x:Key="Obscuro">#323a46</Color>
+            <Color x:Key="TextoObscuro">#333942</Color>
+            <Color x:Key="Rosa">#f672a7</Color>
+            <Color x:Key="Azul">#4a81d4</Color>
+            <Color x:Key="Crear">#34C759</Color>
+            <Color x:Key="Editar">#007AFF</Color>
+            <Color x:Key="Limpiar">Coral</Color>
+            <Color x:Key="Texto">White</Color>
+            <Color x:Key="Gris">#EBECF0</Color>
+            <Color x:Key="BlancoiOs">#F6F7F9</Color>
+            <Color x:Key="AzulAndroid">#1976D2</Color>
+            <x:String x:Key="EmojiMas">&#10133;</x:String>
+            <x:String x:Key="EmojiBasura">&#x1f5d1;&#xfe0f;</x:String>
+
+            <Style x:Key="BotonAgregar" TargetType="Button">
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="TextColor" Value="{DynamicResource Texto}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Crear}" />
+            </Style>
+
+            <Style x:Key="FavouriteButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+                <Setter Property="FontSize" Value="16" />
+                <Setter Property="HeightRequest" Value="32" />
+                <Setter Property="HorizontalOptions" Value="End" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="WidthRequest" Value="32" />
+            </Style>
+
+            <!--  Common style for icon buttons  -->
+            <Style x:Key="IconButtonStyle" TargetType="buttons:SfButton">
+                <Setter Property="TextColor" Value="{DynamicResource Gray-600}" />
+                <Setter Property="BackgroundColor" Value="{StaticResource Transparent}" />
+                <Setter Property="FontFamily" Value="{StaticResource FontIcons}" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="HorizontalTextAlignment" Value="Center" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HeightRequest" Value="40" />
+                <Setter Property="WidthRequest" Value="40" />
+            </Style>
+
+            <!--  Common style for SfListView  -->
+            <Style x:Key="SfListViewStyle" TargetType="xForms:SfListView">
+                <Setter Property="BackgroundColor" Value="{DynamicResource Gray-White}" />
+                <Setter Property="FocusBorderThickness" Value="0" />
+                <Setter Property="SelectionBackgroundColor" Value="Transparent" />
+                <Setter Property="IsScrollBarVisible" Value="False" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <!--  Header Template for Catalog SfListView  -->
+            <DataTemplate x:Key="CatalogDefaultHeaderTemplate">
+                <StackLayout
+            BackgroundColor="{DynamicResource Gray-White}"
+            HorizontalOptions="End"
+            Orientation="Horizontal"
+            Spacing="8"
+            VerticalOptions="Center">
+
+                    <!--  Filter Button  -->
+                    <buttons:SfButton
+                Margin="0"
+                Padding="0"
+                Command="{Binding FilterCommand}"
+                CornerRadius="4"
+                HeightRequest="32"
+                Style="{StaticResource SfButtonStyle}">
+                        <buttons:SfButton.Content>
+                            <StackLayout
+                        Padding="8,5,8,6"
+                        Orientation="Horizontal"
+                        Spacing="8"
+                        VerticalOptions="Center">
+                                <Label
+                            FontFamily="{StaticResource FontIcons}"
+                            FontSize="18"
+                            Style="{StaticResource OptionButtonLabelStyle}"
+                            Text="{StaticResource Filter}"
+                            VerticalTextAlignment="End" />
+                                <Label
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            Style="{StaticResource OptionButtonLabelStyle}"
+                            Text="Filter"
+                            VerticalTextAlignment="Center" />
+                            </StackLayout>
+                        </buttons:SfButton.Content>
+                    </buttons:SfButton>
+
+                    <!--  Sort Button  -->
+                    <buttons:SfButton
+                Command="{Binding SortCommand}"
+                CornerRadius="4"
+                Style="{StaticResource SfButtonStyle}">
+                        <buttons:SfButton.Content>
+                            <StackLayout
+                        Padding="8,5,8,6"
+                        Orientation="Horizontal"
+                        Spacing="8">
+                                <Label
+                            FontFamily="{StaticResource FontIcons}"
+                            FontSize="18"
+                            Style="{StaticResource OptionButtonLabelStyle}"
+                            Text="{StaticResource Sort}"
+                            VerticalTextAlignment="End" />
+                                <Label
+                            FontFamily="{StaticResource Montserrat-SemiBold}"
+                            Style="{StaticResource OptionButtonLabelStyle}"
+                            Text="Sorting" />
+                            </StackLayout>
+                        </buttons:SfButton.Content>
+                    </buttons:SfButton>
+
+                </StackLayout>
+            </DataTemplate>
+
+            <!--  Common style for labels  -->
+            <Style x:Key="CommonLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="{DynamicResource Gray-700}" />
+                <Setter Property="FontFamily" Value="Montserrat-Regular" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="LineHeight" Value="{OnPlatform Android=1.5, Default=-1}" />
+                <Setter Property="HorizontalTextAlignment" Value="Start" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+            </Style>
+
+            <Style
+                x:Key="PriceLabelStyle"
+                BasedOn="{StaticResource CommonLabelStyle}"
+                TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+                <Setter Property="Margin" Value="16,0" />
+                <Setter Property="FontSize" Value="12" />
+            </Style>
+
+
+            <Style x:Key="BotonEditar" TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource Texto}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Editar}" />
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style x:Key="BotonLimpiar" TargetType="Button">
+                <Setter Property="TextColor" Value="{DynamicResource Texto}" />
+                <Setter Property="BackgroundColor" Value="{DynamicResource Limpiar}" />
+                <Setter Property="Margin" Value="2" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <Style x:Key="BotonBorrar" TargetType="Button">
+                <Setter Property="TextColor" Value="Crimson" />
+                <Setter Property="BorderColor" Value="Transparent" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="Padding" Value="0" />
+            </Style>
+
+            <Style x:Key="Datos" TargetType="StackLayout">
+                <Setter Property="Margin" Value="2, 10" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="StartAndExpand" />
+            </Style>
+
+            <Style x:Key="PropiedadDatos" TargetType="StackLayout">
+                <Setter Property="Margin" Value="1" />
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="Start" />
+            </Style>
+
+            <Style x:Key="EtiquetasDatos" TargetType="Label">
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="FontAttributes" Value="Bold" />
+                <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+            </Style>
+
+            <Style x:Key="Formulario" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Vertical" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Padding" Value="10" />
+            </Style>
+
+            <Style x:Key="CajasTextoDatos" TargetType="Entry">
+                <Setter Property="Margin" Value="2,2,2,5" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+            </Style>
+
+            <OnPlatform x:Key="MaterialFontFamily" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Material Design Icons" />
+                <On Platform="Android" Value="MaterialDesignIcons.ttf#Material Design Icons" />
+                <On Platform="UWP" Value="Assets/Fonts/MaterialDesignIcons.ttf#Material Design Icons" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesomeBrands" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Font Awesome 5 Brands" />
+                <On Platform="Android" Value="FontAwesome5BrandsRegular.ttf#Font Awesome 5 Brands" />
+                <On Platform="UWP" Value="Assets/Fonts/FontAwesome5BrandsRegular.ttf#Font Awesome 5 Brands" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesomeDuotone" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Font Awesome 5 Duotone" />
+                <On Platform="Android" Value="FontAwesome5Duotone.ttf#Font Awesome 5 Duotone" />
+                <On Platform="UWP" Value="Assets/Fonts/FontAwesome5Duotone.ttf#Font Awesome 5 Duotone" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesomeLight" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Font Awesome 5 Pro Light" />
+                <On Platform="Android" Value="FontAwesome5Light.ttf#Font Awesome 5 Pro" />
+                <On Platform="UWP" Value="Assets/Fonts/FontAwesome5Light.ttf#Font Awesome 5 Pro" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesomeRegular" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Font Awesome 5 Pro" />
+                <On Platform="Android" Value="FontAwesome5Regular.ttf#Font Awesome 5 Pro" />
+                <On Platform="UWP" Value="Assets/Fonts/FontAwesome5Regular.ttf#Font Awesome 5 Pro" />
+            </OnPlatform>
+
+            <OnPlatform x:Key="FontAwesomeSolid" x:TypeArguments="x:String">
+                <On Platform="iOS" Value="Font Awesome 5 Pro Solid" />
+                <On Platform="Android" Value="FontAwesome5Solid.ttf#Font Awesome 5 Pro" />
+                <On Platform="UWP" Value="Assets/Fonts/FontAwesome5Solid.ttf#Font Awesome 5 Pro" />
+            </OnPlatform>
+        </ResourceDictionary>
+
+    </Application.Resources>
+
+</Application>

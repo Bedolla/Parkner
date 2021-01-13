@@ -1,0 +1,33 @@
+﻿@using Parkner.Data.Entities
+@using Parkner.Core.Constants
+
+<table class="table table-centered table-striped display w-100">
+    <thead class="thead-light">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre(s)</th>
+            <th>Apellido(s)</th>
+            <th>Correo</th>
+            <th style="width: 125px;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Usuarios?.Count > 0)
+        {
+            @foreach (Usuario usuario in Usuarios)
+            {
+                <tr>
+                    <td><img src="@($"{Uris.Fotos}{usuario.Foto}")" alt="Foto" style="width: 50px;"/></td>
+                    <td>@usuario.Nombre</td>
+                    <td>@usuario.Apellido</td>
+                    <td>@usuario.Correo</td>
+                    <td>
+                        <a href="@($"usuarios/ver/{usuario.Id}")" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                        <a href="@($"usuarios/editar/{usuario.Id}")" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="@($"usuarios/borrar/{usuario.Id}")" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

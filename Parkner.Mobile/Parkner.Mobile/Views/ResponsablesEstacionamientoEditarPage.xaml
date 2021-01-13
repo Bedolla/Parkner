@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.ResponsablesEstacionamientoEditarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:converter="clr-namespace:Parkner.Mobile.Converters"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    xmlns:comboBox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    iOsSpecific:Page.UseSafeArea="True"
+    Title="Editar"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.BindingContext>
+        <viewModels:ResponsablesEstacionamientoEditarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <converter:MapClickedEventArgsToPositionConverter x:Key="PositionConverter"/>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="{DynamicResource Gray-100}" Spacing="0"
+                         Padding="16,24">
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,0,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Nombre"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference NombreEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="NombreEntry"
+                        Placeholder="Ejemplo: San Juan"
+                        Text="{Binding Nombre}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Descripción"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference ApellidoEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="ApellidoEntry"
+                        Placeholder="Ejemplo: Eco Estacionamiento Portuario"
+                        Text="{Binding Descripcion}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Costo por hora"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference CorreoEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="CorreoEntry"
+                        Placeholder="Ejemplo: 15"
+                        Text="{Binding Costo}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Tipo"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                        BorderColor="{Binding Source={x:Reference TipoPicker}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource BusinessFormBorderStyle}">
+                    <comboBox:SfComboBox
+                            x:Name="TipoPicker" 
+                            SelectedValue="{Binding Tipo, Mode=TwoWay}"
+                            Style="{StaticResource ComboBoxStyle}"
+                            Watermark="Tipo">
+                        <comboBox:SfComboBox.ComboBoxSource>
+                            <generic:List x:TypeArguments="x:String">
+                                <x:String>Aeropuerto</x:String>
+                                <x:String>Centro Comercial</x:String>
+                                <x:String>Cochera</x:String>
+                                <x:String>Estacion de Trenes</x:String>
+                                <x:String>Feria</x:String>
+                                <x:String>Puerto</x:String>
+                                <x:String>Terreno</x:String>
+                            </generic:List>
+                        </comboBox:SfComboBox.ComboBoxSource>
+                        <comboBox:SfComboBox.DropDownButtonSettings>
+                            <comboBox:DropDownButtonSettings Width="30" Height="30">
+                                <comboBox:DropDownButtonSettings.View>
+                                    <Label
+                                            Margin="0"
+                                            FontFamily="{StaticResource FontIcons}"
+                                            FontSize="25"
+                                            HorizontalTextAlignment="Center"
+                                            Text="{StaticResource DropDownButtonIcon}"
+                                            TextColor="{DynamicResource Gray-600}"
+                                            VerticalTextAlignment="Center" />
+                                </comboBox:DropDownButtonSettings.View>
+                            </comboBox:DropDownButtonSettings>
+                        </comboBox:SfComboBox.DropDownButtonSettings>
+                    </comboBox:SfComboBox>
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Número"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference NumeroEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="NumeroEntry"
+                        Placeholder="Ejemplo: 88-B"
+                        Text="{Binding Numero}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Calle"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference CalleEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="CalleEntry"
+                        Placeholder="Ejemplo: Avenida Del Río"
+                        Text="{Binding Calle}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Entre calles"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference EntreCallesEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="EntreCallesEntry"
+                        Placeholder="Ejemplo: San Andrés y San Gerónimo"
+                        Text="{Binding EntreCalles}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Colonia"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference ColoniaEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="ColoniaEntry"
+                        Placeholder="Ejemplo: San Cuilmas"
+                        Text="{Binding Colonia}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Código postal"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference CodigoPostalEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="CodigoPostalEntry"
+                        Placeholder="Ejemplo: 28000-0000"
+                        Text="{Binding CodigoPostal}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Municipio"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference MunicipioEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="MunicipioEntry"
+                        Placeholder="Ejemplo: San Hipólito"
+                        Text="{Binding Municipio}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,24,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Foto"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <Grid x:Name="ContendorEditor" IsVisible="False" HeightRequest="512" Margin="0,0,0,16" />
+
+                <buttons:SfButton
+                    Margin="0, 0, 0, 20"
+                    Command="{Binding BuscarFotoCommand}"
+                    CommandParameter="{x:Reference ContendorEditor}"
+                    IsEnabled="{Binding Habilitado}"
+                    Style="{StaticResource SfButtonStyle}"
+                    BackgroundColor="{DynamicResource AzulAndroid}"
+                    WidthRequest="128"
+                    HasShadow="True"
+                    Text="Buscar..." />
+
+                <controls:Mapa
+                    HeightRequest="200"
+                    IsShowingUser="True"
+                    MapType="Street"
+                    Posicion="{Binding Posision}"
+                    Pines="{Binding Pines}">
+                    <controls:Mapa.Behaviors>
+                        <behaviors:EventToCommandBehavior 
+                            EventName="MapClicked"
+                            Command="{Binding MapaCliqueadoCommand}"
+                            Converter="{StaticResource PositionConverter}"/>
+                    </controls:Mapa.Behaviors>
+                </controls:Mapa>
+
+                <buttons:SfButton
+                    Command="{Binding RegistrarCommand}"
+                    Margin="0,24,0,0"
+                    Style="{StaticResource SfButtonStyle}"
+                    HasShadow="True"
+                    Text="Editar"
+                    WidthRequest="200" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

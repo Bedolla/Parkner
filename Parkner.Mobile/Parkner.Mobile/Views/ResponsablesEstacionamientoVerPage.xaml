@@ -1,0 +1,640 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+             xmlns:controls="clr-namespace:Parkner.Mobile.Controls;assembly=Parkner.Mobile"
+             xmlns:xForms1="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+             xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+             xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+             xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+             xmlns:helpers="clr-namespace:Parkner.Mobile.Helpers;assembly=Parkner.Mobile"
+             iOsSpecific:Page.UseSafeArea="True"
+             x:Class="Parkner.Mobile.Views.ResponsablesEstacionamientoVerPage"
+             NavigationPage.HasNavigationBar="True"
+             Title="Estacionamiento"
+             BackgroundColor="{DynamicResource Gray-White}">
+
+    <ContentPage.BindingContext>
+        <viewModels:ResponsablesEstacionamientoVerViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout Spacing="0">
+
+                <Image
+                    Aspect="AspectFill"
+                    BackgroundColor="{DynamicResource Gray-200}"
+                    HorizontalOptions="CenterAndExpand"
+                    VerticalOptions="CenterAndExpand"
+                    Margin="0,0,0,-100"
+                    HeightRequest="270"
+                    WidthRequest="430">
+                    <Image.Source>
+                        <UriImageSource
+                            CachingEnabled="False"
+                            Uri="{Binding Foto}" />
+                    </Image.Source>
+                </Image>
+
+                <ContentView>
+                    <controls:CustomShadowFrame
+                        Margin="16,12,16,16"
+                        CornerRadius="12"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="{DynamicResource Gray-200}"
+                        Padding="0,0,0,10"
+                        BorderWidth="2"
+                        HasShadow="True">
+
+                        <StackLayout Spacing="0">
+
+                            <Grid Margin="16"
+                                  ColumnSpacing="0"
+                                  RowSpacing="0">
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Label
+                                    Grid.Row="0"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalOptions="CenterAndExpand"
+                                    FontFamily="{DynamicResource Montserrat-SemiBold}"
+                                    FontSize="25"
+                                    Style="{StaticResource LabelStyle}"
+                                    Text="{Binding Estacionamiento.Nombre}"
+                                    TextColor="{DynamicResource Gray-900}" />
+
+                                <xForms1:SfRating
+                                    Grid.Row="1"
+                                    HorizontalOptions="CenterAndExpand"
+                                    Margin="0"
+                                    RatingSettings="{StaticResource RatingSettings}"
+                                    Style="{StaticResource SfRatingStyle}"
+                                    Value="{Binding Estacionamiento.Calificacion}" />
+
+                                <Label
+                                    Grid.Row="2"
+                                    VerticalOptions="Center"
+                                    HorizontalOptions="Center"
+                                    Margin="0"
+                                    FontSize="12"
+                                    LineHeight="{OnPlatform Default=-1, Android=1.5}">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span FontSize="24"
+                                                  FontFamily="{DynamicResource Montserrat-Medium}"
+                                                  Text="{Binding Estacionamiento.Costo, StringFormat='${0:0}'}"
+                                                  TextColor="{DynamicResource Primario}" />
+
+                                            <Span FontSize="14"
+                                                  FontFamily="{DynamicResource Montserrat-Regular}"
+                                                  Text=" por hora"
+                                                  TextColor="{DynamicResource Gray-700}" />
+
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+
+                                <Label Grid.Row="3"
+                                       HeightRequest="20"
+                                       WidthRequest="100"
+                                       Text="{Binding Cajones}"
+                                       Margin="0"
+                                       TextColor="{StaticResource Steel}"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+
+                                <Label
+                                    Grid.Row="3"
+                                    Margin="0"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    TextColor="White"
+                                    WidthRequest="20"
+                                    HeightRequest="20"
+                                    FontFamily="{DynamicResource FontAwesomeRegular}"
+                                    BackgroundColor="{StaticResource Satisfactorio}"
+                                    Text="{x:Static helpers:FontAwesomeIcons.LayerPlus}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CajonesCrudTapCommand}"
+                                                              CommandParameter="{Binding Estacionamiento.Id}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <Label
+                                    Grid.Row="4"
+                                    Margin="0,4"
+                                    HorizontalTextAlignment="Center"
+                                    FontFamily="{DynamicResource Montserrat-Medium}"
+                                    FontSize="12"
+                                    TextColor="{DynamicResource Gray-700}"
+                                    Style="{StaticResource LabelStyle}"
+                                    Text="{Binding Estacionamiento.Descripcion}" />
+
+                                <Label
+                                    Grid.Row="5"
+                                    Margin="0"
+                                    HorizontalTextAlignment="Start"
+                                    FontFamily="{DynamicResource Montserrat-SemiBold}"
+                                    Style="{StaticResource LabelStyle}"
+                                    Text="Horarios"
+                                    TextColor="{DynamicResource Gray-900}" />
+
+                                <Label
+                                    Grid.Row="5"
+                                    Margin="0"
+                                    HorizontalTextAlignment="Center"
+                                    VerticalTextAlignment="Center"
+                                    HorizontalOptions="End"
+                                    TextColor="White"
+                                    WidthRequest="20"
+                                    HeightRequest="20"
+                                    FontFamily="{DynamicResource FontAwesomeRegular}"
+                                    BackgroundColor="{StaticResource Satisfactorio}"
+                                    Text="{x:Static helpers:FontAwesomeIcons.CalendarPlus}">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding HorarioCrearTapCommand}"
+                                                              CommandParameter="{Binding Estacionamiento.Id}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                                <ListView
+                                    Grid.Row="6"
+                                    HeightRequest="75"
+                                    HasUnevenRows="True"
+                                    IsPullToRefreshEnabled="False"
+                                    SelectionMode="None"
+                                    SeparatorVisibility="None"
+                                    BackgroundColor="Transparent"
+                                    VerticalOptions="Start"
+                                    ItemsSource="{Binding Horarios}">
+
+                                    <ListView.Behaviors>
+                                        <behaviors:EventToCommandBehavior EventName="ItemTapped"
+                                                                          Command="{Binding HorarioEditarTapCommand}" />
+                                    </ListView.Behaviors>
+
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+
+                                                <Grid
+                                                    RowSpacing="0"
+                                                    ColumnSpacing="0">
+
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition Height="72" />
+                                                        <RowDefinition Height="1" />
+                                                    </Grid.RowDefinitions>
+
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="*" />
+                                                        <ColumnDefinition Width="120" />
+                                                    </Grid.ColumnDefinitions>
+
+                                                    <StackLayout
+                                                        Grid.Column="0"
+                                                        Grid.Row="0"
+                                                        Spacing="0"
+                                                        Margin="5,13">
+
+                                                        <Label VerticalTextAlignment="Center"
+                                                               VerticalOptions="Center"
+                                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                                               FontSize="16"
+                                                               LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                               TextColor="{DynamicResource Gray-900}"
+                                                               Text="{Binding Inicio, StringFormat='{0:h:mm tt}'}"
+                                                               LineBreakMode="TailTruncation" />
+
+                                                        <Label VerticalOptions="FillAndExpand"
+                                                               VerticalTextAlignment="Center"
+                                                               FontSize="14"
+                                                               FontFamily="{DynamicResource Montserrat-Medium}"
+                                                               Text="{Binding Fin, StringFormat='{0:h:mm tt}'}"
+                                                               LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                               TextColor="{DynamicResource Gray-700}" />
+
+
+                                                    </StackLayout>
+
+                                                    <border:SfBorder
+                                                        Grid.Column="1"
+                                                        Grid.Row="0"
+                                                        Grid.RowSpan="2"
+                                                        BackgroundColor="{DynamicResource Primario}"
+                                                        WidthRequest="1000"
+                                                        HeightRequest="24"
+                                                        VerticalOptions="Center"
+                                                        Margin="20,4"
+                                                        BorderColor="Transparent">
+
+                                                        <StackLayout Orientation="Horizontal"
+                                                                     HorizontalOptions="Center"
+                                                                     VerticalOptions="Center"
+                                                                     Spacing="4.7">
+
+                                                            <Label
+                                                                FontFamily="{DynamicResource Montserrat-Medium}"
+                                                                VerticalTextAlignment="Center"
+                                                                FontSize="12"
+                                                                LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                                HorizontalOptions="Center"
+                                                                Text="{Binding Dia}"
+                                                                TextColor="{DynamicResource Gray-White}" />
+
+                                                        </StackLayout>
+                                                    </border:SfBorder>
+
+                                                    <!--<BoxView Grid.Row="1"
+                                                                 Grid.ColumnSpan="2"
+                                                                 Grid.Column="0"
+                                                                 Style="{StaticResource SeparatorStyle}" />-->
+                                                </Grid>
+
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+
+                                </ListView>
+
+                                <Label
+                                    Grid.Row="7"
+                                    HorizontalOptions="Start"
+                                    FontFamily="{DynamicResource Montserrat-SemiBold}"
+                                    FontSize="14"
+                                    Style="{StaticResource LabelStyle}"
+                                    Text="Dirección"
+                                    TextColor="{DynamicResource Gray-900}" />
+
+                                <controls:Mapa
+                                    Grid.Row="8"
+                                    BackgroundColor="{DynamicResource Gray-White}"
+                                    Margin="0,8"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand"
+                                    HasZoomEnabled="True"
+                                    HasScrollEnabled="True"
+                                    IsShowingUser="False"
+                                    MapType="Street"
+                                    Posicion="{Binding Posision}"
+                                    Pines="{Binding Pines}"
+                                    HeightRequest="120" />
+
+                                <Grid
+                                    Grid.Row="9"
+                                    ColumnSpacing="11"
+                                    Margin="0,8,0,0"
+                                    RowSpacing="8">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        WidthRequest="12"
+                                        FontFamily="{DynamicResource FontIcons}"
+                                        FontSize="12"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource LabelStyle}"
+                                        Text="{StaticResource MapPin}" HorizontalTextAlignment="Start"
+                                        TextColor="{DynamicResource Gray-900}" />
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        HorizontalTextAlignment="Start"
+                                        FontFamily="{DynamicResource Montserrat-Medium}"
+                                        FontSize="12"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource LabelStyle}"
+                                        Text="{Binding Direccion}"
+                                        TextColor="{DynamicResource Gray-900}" />
+                                </Grid>
+
+                                <StackLayout
+                                    Grid.Row="10"
+                                    IsVisible="{Binding MostrarReservas}"
+                                    Margin="0,8"
+                                    Spacing="8"
+                                    Orientation="Vertical">
+
+                                    <Label
+                                        Margin="0"
+                                        HorizontalTextAlignment="Start"
+                                        FontFamily="{DynamicResource Montserrat-SemiBold}"
+                                        Style="{StaticResource LabelStyle}"
+                                        Text="{Binding CantidadReservas, StringFormat='Reservas ({0:N0})'}"
+                                        TextColor="{DynamicResource Gray-900}" />
+
+                                    <ListView
+                                        HeightRequest="75"
+                                        HasUnevenRows="True"
+                                        IsPullToRefreshEnabled="False"
+                                        SelectionMode="None"
+                                        SeparatorVisibility="None"
+                                        BackgroundColor="Transparent"
+                                        VerticalOptions="Start"
+                                        ItemsSource="{Binding Reservas}">
+
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+
+                                                    <Grid
+                                                        RowSpacing="0"
+                                                        ColumnSpacing="0">
+
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="72" />
+                                                            <RowDefinition Height="1" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="120" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <StackLayout
+                                                            Grid.Column="0"
+                                                            Grid.Row="0"
+                                                            Spacing="0"
+                                                            Margin="5,13">
+
+                                                            <Label VerticalTextAlignment="Center"
+                                                                   VerticalOptions="Center"
+                                                                   FontFamily="{DynamicResource Montserrat-Medium}"
+                                                                   FontSize="16"
+                                                                   LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                                   TextColor="{DynamicResource Gray-900}"
+                                                                   Text="{Binding Inicio, StringFormat='{0:dd/MM/yyyy h:mm tt}'}"
+                                                                   LineBreakMode="TailTruncation" />
+
+                                                            <Label VerticalOptions="FillAndExpand"
+                                                                   VerticalTextAlignment="Center"
+                                                                   FontSize="14"
+                                                                   FontFamily="{DynamicResource Montserrat-Medium}"
+                                                                   Text="{Binding Fin, StringFormat='{0:dd/MM/yyyy h:mm tt}'}"
+                                                                   LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                                   TextColor="{DynamicResource Gray-700}" />
+
+
+                                                        </StackLayout>
+
+                                                        <border:SfBorder
+                                                            Grid.Column="1"
+                                                            Grid.Row="0"
+                                                            Grid.RowSpan="2"
+                                                            BackgroundColor="{DynamicResource Satisfactorio}"
+                                                            WidthRequest="1000"
+                                                            HeightRequest="24"
+                                                            VerticalOptions="Center"
+                                                            Margin="10,4"
+                                                            CornerRadius="12"
+                                                            BorderColor="Transparent">
+
+                                                            <StackLayout Orientation="Horizontal"
+                                                                         HorizontalOptions="Center"
+                                                                         VerticalOptions="Center"
+                                                                         Spacing="4.7">
+
+                                                                <Label
+                                                                    FontFamily="{DynamicResource Montserrat-Medium}"
+                                                                    VerticalTextAlignment="Center"
+                                                                    FontSize="12"
+                                                                    LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                                    HorizontalOptions="Center"
+                                                                    Text="{Binding Duracion}"
+                                                                    TextColor="{DynamicResource Gray-White}" />
+
+                                                            </StackLayout>
+                                                        </border:SfBorder>
+
+                                                        <!--<BoxView Grid.Row="1"
+                                                                 Grid.ColumnSpan="2"
+                                                                 Grid.Column="0"
+                                                                 Style="{StaticResource SeparatorStyle}" />-->
+                                                    </Grid>
+
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+
+                                    </ListView>
+
+                                </StackLayout>
+
+                                <StackLayout
+                                    Grid.Row="11"
+                                    Margin="0,8"
+                                    Spacing="8"
+                                    Orientation="Vertical">
+
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition />
+                                            <ColumnDefinition />
+                                        </Grid.ColumnDefinitions>
+
+                                        <Label
+                                            Grid.Column="0" 
+                                            Margin="0"
+                                            HorizontalTextAlignment="Start"
+                                            FontFamily="{DynamicResource Montserrat-SemiBold}"
+                                            Style="{StaticResource LabelStyle}"
+                                            Text="{Binding CantidadEmpleados, StringFormat='Empleados ({0:N0})'}"
+                                            TextColor="{DynamicResource Gray-900}" />
+
+                                        <Label
+                                            Grid.Column="1" 
+                                            Margin="0"
+                                            HorizontalTextAlignment="Center"
+                                            VerticalTextAlignment="Center"
+                                            HorizontalOptions="End"
+                                            TextColor="White"
+                                            FontSize="10"
+                                            WidthRequest="20"
+                                            HeightRequest="20"
+                                            FontFamily="{DynamicResource FontAwesomeRegular}"
+                                            BackgroundColor="{StaticResource Satisfactorio}"
+                                            Text="{x:Static helpers:FontAwesomeIcons.UserPlus}">
+                                            <Label.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding EmpleadoCrearTapCommand}"
+                                                                      CommandParameter="{Binding Estacionamiento.Id}" />
+                                            </Label.GestureRecognizers>
+                                        </Label>
+                                    </Grid>
+
+                                    <ListView
+                                        HeightRequest="75"
+                                        HasUnevenRows="True"
+                                        IsPullToRefreshEnabled="False"
+                                        SelectionMode="None"
+                                        SeparatorVisibility="None"
+                                        BackgroundColor="Transparent"
+                                        VerticalOptions="Start"
+                                        ItemsSource="{Binding Estacionamiento.Empleados}">
+
+                                        <ListView.Behaviors>
+                                            <behaviors:EventToCommandBehavior EventName="ItemTapped"
+                                                                              Command="{Binding EmpleadoEditarTapCommand}" />
+                                        </ListView.Behaviors>
+
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+
+                                                    <Grid
+                                                        RowSpacing="0"
+                                                        ColumnSpacing="0">
+
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="72" />
+                                                            <RowDefinition Height="1" />
+                                                        </Grid.RowDefinitions>
+
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="160" />
+                                                        </Grid.ColumnDefinitions>
+
+                                                        <StackLayout
+                                                            Grid.Column="0"
+                                                            Grid.Row="0"
+                                                            Spacing="0"
+                                                            Margin="5,13">
+
+                                                            <Label VerticalTextAlignment="Center"
+                                                                   VerticalOptions="Center"
+                                                                   FontFamily="{DynamicResource Montserrat-Medium}"
+                                                                   FontSize="16"
+                                                                   LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                                   TextColor="{DynamicResource Gray-900}"
+                                                                   Text="{Binding Nombre, StringFormat='{0}'}"
+                                                                   LineBreakMode="TailTruncation" />
+
+                                                            <Label VerticalOptions="FillAndExpand"
+                                                                   VerticalTextAlignment="Center"
+                                                                   FontSize="14"
+                                                                   FontFamily="{DynamicResource Montserrat-Medium}"
+                                                                   Text="{Binding Apellido, StringFormat='{0}'}"
+                                                                   LineHeight="{OnPlatform Android=1.5,Default=-1}"
+                                                                   TextColor="{DynamicResource Gray-700}" />
+
+
+                                                        </StackLayout>
+
+                                                        <border:SfBorder
+                                                            Grid.Column="1"
+                                                            Grid.Row="0"
+                                                            Grid.RowSpan="2"
+                                                            HeightRequest="70"
+                                                            WidthRequest="70"
+                                                            VerticalOptions="End"
+                                                            Margin="8,4"
+                                                            BorderColor="Transparent">
+
+                                                            <StackLayout Orientation="Vertical"
+                                                                         HorizontalOptions="EndAndExpand"
+                                                                         VerticalOptions="Center"
+                                                                         Spacing="0">
+
+                                                                <Image
+                                                                    Margin="0"
+                                                                    Aspect="Fill"
+                                                                    BackgroundColor="{DynamicResource Gray-100}"
+                                                                    HeightRequest="70"
+                                                                    WidthRequest="70">
+                                                                    <Image.Source>
+                                                                        <UriImageSource
+                                                                            CachingEnabled="False"
+                                                                            Uri="{Binding Foto}" />
+                                                                    </Image.Source>
+                                                                </Image>
+
+                                                            </StackLayout>
+                                                        </border:SfBorder>
+
+                                                        <!--<BoxView Grid.Row="1"
+                                                                 Grid.ColumnSpan="2"
+                                                                 Grid.Column="0"
+                                                                 Style="{StaticResource SeparatorStyle}" />-->
+                                                    </Grid>
+
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+
+                                    </ListView>
+
+                                </StackLayout>
+
+                                <StackLayout
+                                    Grid.Row="12"
+                                    Margin="0,0,0,0"
+                                    Spacing="8"
+                                    Orientation="Vertical">
+
+                                    <buttons:SfButton
+                                        Command="{Binding EditarCommand}"
+                                        IsEnabled="{Binding Habilitado}"
+                                        Margin="0,24,0,0"
+                                        BackgroundColor="{StaticResource Editar}"
+                                        Style="{StaticResource SfButtonStyle}"
+                                        Text="Editar"
+                                        WidthRequest="200" />
+
+                                    <buttons:SfButton
+                                        Command="{Binding BorrarCommand}"
+                                        IsEnabled="{Binding Habilitado}"
+                                        Margin="0,24,0,0"
+                                        BackgroundColor="{StaticResource Peligro}"
+                                        Style="{StaticResource SfButtonStyle}"
+                                        Text="Borrar"
+                                        WidthRequest="200" />
+                                </StackLayout>
+                            </Grid>
+
+                        </StackLayout>
+                    </controls:CustomShadowFrame>
+                </ContentView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

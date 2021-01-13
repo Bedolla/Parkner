@@ -1,0 +1,24 @@
+﻿<CascadingBlazoredModal>
+    <Router AppAssembly="@typeof(Program).Assembly">
+        <Found Context="routeData">
+            <AuthorizeRouteView DefaultLayout="@typeof(MainLayout)" RouteData="@routeData">
+                <NotAuthorized>
+                    @if ((context.User.Identity is not null) && context.User.Identity.IsAuthenticated)
+                    {
+                        <Codigo401/>
+                    }
+                    else
+                    {
+                        <Codigo301/>
+                    }
+                </NotAuthorized>
+                <Authorizing>
+                    <p>Revisando permisos...</p>
+                </Authorizing>
+            </AuthorizeRouteView>
+        </Found>
+        <NotFound>
+            <Codigo404/>
+        </NotFound>
+    </Router>
+</CascadingBlazoredModal>

@@ -1,0 +1,35 @@
+﻿@using Parkner.Data.Entities
+@using Parkner.Core.Constants
+
+<table class="table table-centered table-striped display w-100">
+    <thead class="thead-light">
+        <tr>
+            <th>Foto</th>
+            <th>Nombre(s)</th>
+            <th>Tipo</th>
+            <th>Concurrido</th>
+            <th>Calificación</th>
+            <th style="width: 125px;">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Estacionamientos?.Count > 0)
+        {
+            @foreach (Estacionamiento estacionamiento in Estacionamientos)
+            {
+                <tr>
+                    <td><img src="@($"{Uris.Fotos}{estacionamiento.Foto}")" alt="Foto" style="width: 50px;"/></td>
+                    <td>@estacionamiento.Nombre</td>
+                    <td>@estacionamiento.Tipo</td>
+                    <td>@(estacionamiento.Concurrido ? "Sí" : "No")</td>
+                    <td>@(estacionamiento.Calificacion.HasValue ? estacionamiento.Calificacion.Value.ToString("N2") : "Sin calificación")</td>
+                    <td>
+                        <a href="@($"responsables/estacionamientos/ver/{estacionamiento.Id}")" class="action-icon"> <i class="mdi mdi-eye"></i></a>
+                        <a href="@($"responsables/estacionamientos/editar/{estacionamiento.Id}")" class="action-icon"> <i class="mdi mdi-square-edit-outline"></i></a>
+                        <a href="@($"responsables/estacionamientos/borrar/{estacionamiento.Id}")" class="action-icon"> <i class="mdi mdi-delete"></i></a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

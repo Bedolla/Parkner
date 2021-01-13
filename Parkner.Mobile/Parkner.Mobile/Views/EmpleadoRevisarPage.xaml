@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.EmpleadoRevisarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:converter="clr-namespace:Parkner.Mobile.Converters"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    iOsSpecific:Page.UseSafeArea="True"
+    Title="Reserva"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.BindingContext>
+        <viewModels:EmpleadoRevisarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="{DynamicResource Gray-100}" Spacing="0"
+                         Padding="16,24">
+
+                <buttons:SfButton
+                    Command="{Binding EscanearCommand}"
+                    Margin="0,0,0,24"
+                    Style="{StaticResource SfButtonStyle}"
+                    HasShadow="True"
+                    BackgroundColor="{StaticResource Editar}"
+                    Text="Escanear código QR"
+                    WidthRequest="200" />
+
+                <border:SfBorder
+                    BorderColor="{Binding Source={x:Reference NombreEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                    Style="{StaticResource BusinessFormBorderStyle}">
+                    <controls:BorderlessEntry
+                        x:Name="NombreEntry"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Placeholder="Ingrese el Id de la reserva manualmente"
+                        Text="{Binding Id}"
+                        Style="{StaticResource EntryTextBoxStyle}" />
+                </border:SfBorder>
+              
+                <buttons:SfButton
+                    IsEnabled="{Binding Habilitado}"
+                    Command="{Binding RegistrarCommand}"
+                    Margin="0,24,0,0"
+                    Style="{StaticResource SfButtonStyle}"
+                    HasShadow="True"
+                    Text="Registrar"
+                    WidthRequest="200" />
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

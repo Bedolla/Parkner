@@ -1,0 +1,61 @@
+﻿@page "/responsables/estacionamientos/empleados"
+
+<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <h4 class="page-title">Empleados</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <div class="row mb-2">
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <div class="form-group mb-2">
+                            <Busqueda EnBusquedaCambio="BusquedaCambio" />
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <div class="form-group mb-2">
+                            <Ordenar Opciones="Opciones" Seleccionado="@PaginacionPeticion.OrdenarPor" EnOrdenCambio="OrdenCambio"></Ordenar>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-3">
+                        <div class="form-group mb-2">
+                            <Desplegar EnCantidadCambio="CantidadCambio"></Desplegar>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-2">
+                        <div class="text-lg-right mb-2">
+                            <button @onclick="Crear" type="button" class="btn btn-block btn-success waves-effect waves-light"><i class="fe-user-plus mr-2"></i> Crear</button>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12 col-sm-12 col-md-1">
+                        <div class="text-lg-center">
+                            <button @onclick="Agregar" type="button" class="btn btn-block btn-info waves-effect waves-light"><i class="mdi mdi-account-arrow-left mr-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table-responsive">
+                    <TablaEmpleados Empleados="Empleados"></TablaEmpleados>
+                </div>
+
+                <Paginacion MetaData="PaginacionMetaData" Separacion="2" PaginaSeleccionada="PaginaSeleccionada" />
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carta: Fin -->

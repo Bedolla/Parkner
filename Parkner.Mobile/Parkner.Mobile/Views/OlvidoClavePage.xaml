@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.OlvidoClavePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:views="clr-namespace:Parkner.Mobile.Views;assembly=Parkner.Mobile"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    Title="Olvidó Contraseña"
+    BackgroundColor="{DynamicResource Gray-200}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:OlvidoClaveViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="Center">
+            <ScrollView.VerticalOptions>
+                <OnIdiom
+                    x:TypeArguments="LayoutOptions"
+                    Default="CenterAndExpand"
+                    Phone="FillAndExpand" />
+            </ScrollView.VerticalOptions>
+
+            <StackLayout
+                Margin="{core:OnPlatformOrientationThickness PhonePortrait='20,32',
+                                                             PhoneLandscape='150,32',
+                                                             TabletPortrait='200,50',
+                                                             TabletLandscape='300,50',
+                                                             Desktop='30'}"
+                Spacing="0"
+                VerticalOptions="FillAndExpand"
+                WidthRequest="{OnPlatform Default='-1',
+                                          UWP='350'}">
+
+                <Grid RowSpacing="24" VerticalOptions="CenterAndExpand">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Label
+                        Grid.Row="0"
+                        FontFamily="{StaticResource Montserrat-SemiBold}"
+                        FontSize="20"
+                        HorizontalOptions="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="¿Olvidó su Clave?"
+                        TextColor="{DynamicResource Gray-900}"
+                        VerticalTextAlignment="End" />
+
+                    <Label
+                        Grid.Row="1"
+                        Margin="0,-16,0,8"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Se le enviará la contraseña al correo, si es que dicho correo existe, por seguridad no se advierte si existe o no el correo."
+                        TextColor="{DynamicResource Gray-800}"
+                        VerticalTextAlignment="Start" />
+
+                    <views:CorreoEntryControl Grid.Row="2" />
+
+                    <buttons:SfButton
+                        Grid.Row="3"
+                        Command="{Binding SolicitarCommand}"
+                        CornerRadius="20"
+                        Style="{StaticResource SfButtonStyle}"
+                        Text="Solicitar contraseña" />
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

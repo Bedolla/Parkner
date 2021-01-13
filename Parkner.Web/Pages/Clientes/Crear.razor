@@ -1,0 +1,76 @@
+﻿@page  "/clientes/crear"
+
+<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">Parkner</li>
+                    <li class="breadcrumb-item">Clientes</li>
+                    <li class="breadcrumb-item active">Crear</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Crear cliente</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <EditForm Model="@Modelo" OnValidSubmit="Enviar" Context="c">
+                    <DataAnnotationsValidator />
+
+                    <div class="form-group mb-3">
+                        <label for="nombre">Nombre(s)</label>
+                        <InputText @bind-Value="Modelo.Nombre" class="form-control" id="nombre" placeholder="Nombre(s)" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Nombre)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="apellido">Apellido(s)</label>
+                        <InputText @bind-Value="Modelo.Apellido" class="form-control" id="apellido" placeholder="Apellido(s)" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Apellido)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="correo">Correo</label>
+                        <InputText @bind-Value="Modelo.Correo" class="form-control" id="correo" placeholder="Correo" type="email" />
+                        <ValidationMessage For="@(() => Modelo.Correo)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <InputPass @bind-Value="Modelo.Clave" class="@c.FieldCssClass(() => Modelo.Clave)" Label="Cotraseña" Id="clave" PlaceHolder="Contraseña" ValidationFor="@(() => Modelo.Clave)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <InputPass @bind-Value="Modelo.ConfirmacionClave" class="@c.FieldCssClass(() => Modelo.ConfirmacionClave)" Label="Confirmación de contraseña" Id="confirmacion" PlaceHolder="Confirmación de contraseña" ValidationFor="@(() => Modelo.ConfirmacionClave)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="foto">Foto</label>
+                        <InputPhoto Id="foto" @bind-Value="Modelo.Foto" @bind-FotoMemoria="@FotoMemoria" />
+                        <ValidationMessage For="@(() => Modelo.Foto)" />
+                    </div>
+
+                    <div class="form-group mb-0 text-center">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-1 mb-sm-1 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-danger mr-md-1 mr-lg-1 mr-xl-1" type="reset" @onclick="Cancelar"> Cancelar </button>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-success ml-md-1 ml-lg-1 ml-xl-1" type="submit"> Crear </button>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,173 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup Label="Globals">
+		<SccProjectName>SAK</SccProjectName>
+		<SccProvider>SAK</SccProvider>
+		<SccAuxPath>SAK</SccAuxPath>
+		<SccLocalPath>SAK</SccLocalPath>
+		<Configurations>Debug;Release</Configurations>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<!--<TargetFramework>net5.0</TargetFramework>-->
+		<TargetFramework>net5.0-windows</TargetFramework>
+		<UserSecretsId>c716645f-8e0b-4520-a393-99d764a04ce4</UserSecretsId>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="wwwroot\images\avatares\NewFolder\**" />
+		<Compile Remove="wwwroot\libs\autonumeric\**" />
+		<Compile Remove="wwwroot\libs\bootstrap-maxlength\**" />
+		<Compile Remove="wwwroot\libs\bootstrap-select\**" />
+		<Compile Remove="wwwroot\libs\c3\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-bs4\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-buttons-bs4\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-buttons\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-keytable-bs4\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-keytable\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-responsive-bs4\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-responsive\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-select-bs4\**" />
+		<Compile Remove="wwwroot\libs\datatables.net-select\**" />
+		<Compile Remove="wwwroot\libs\datatables.net\**" />
+		<Compile Remove="wwwroot\libs\flatpickr\**" />
+		<Compile Remove="wwwroot\libs\flot-charts\**" />
+		<Compile Remove="wwwroot\libs\flot-orderbars\**" />
+		<Compile Remove="wwwroot\libs\gmaps\**" />
+		<Compile Remove="wwwroot\libs\ion-rangeslider\**" />
+		<Compile Remove="wwwroot\libs\jquery-datatables-checkboxes\**" />
+		<Compile Remove="wwwroot\libs\jquery-mapael\**" />
+		<Compile Remove="wwwroot\libs\jquery-sparkline\**" />
+		<Compile Remove="wwwroot\libs\jquery.counterup\**" />
+		<Compile Remove="wwwroot\libs\jquery.flot.tooltip\**" />
+		<Compile Remove="wwwroot\libs\jquery.scrollto\**" />
+		<Compile Remove="wwwroot\libs\minimist\**" />
+		<Compile Remove="wwwroot\libs\moment\**" />
+		<Compile Remove="wwwroot\libs\morris.js06\**" />
+		<Compile Remove="wwwroot\libs\multiselect\**" />
+		<Content Remove="wwwroot\images\avatares\NewFolder\**" />
+		<Content Remove="wwwroot\libs\autonumeric\**" />
+		<Content Remove="wwwroot\libs\bootstrap-maxlength\**" />
+		<Content Remove="wwwroot\libs\bootstrap-select\**" />
+		<Content Remove="wwwroot\libs\c3\**" />
+		<Content Remove="wwwroot\libs\datatables.net-bs4\**" />
+		<Content Remove="wwwroot\libs\datatables.net-buttons-bs4\**" />
+		<Content Remove="wwwroot\libs\datatables.net-buttons\**" />
+		<Content Remove="wwwroot\libs\datatables.net-keytable-bs4\**" />
+		<Content Remove="wwwroot\libs\datatables.net-keytable\**" />
+		<Content Remove="wwwroot\libs\datatables.net-responsive-bs4\**" />
+		<Content Remove="wwwroot\libs\datatables.net-responsive\**" />
+		<Content Remove="wwwroot\libs\datatables.net-select-bs4\**" />
+		<Content Remove="wwwroot\libs\datatables.net-select\**" />
+		<Content Remove="wwwroot\libs\datatables.net\**" />
+		<Content Remove="wwwroot\libs\flatpickr\**" />
+		<Content Remove="wwwroot\libs\flot-charts\**" />
+		<Content Remove="wwwroot\libs\flot-orderbars\**" />
+		<Content Remove="wwwroot\libs\gmaps\**" />
+		<Content Remove="wwwroot\libs\ion-rangeslider\**" />
+		<Content Remove="wwwroot\libs\jquery-datatables-checkboxes\**" />
+		<Content Remove="wwwroot\libs\jquery-mapael\**" />
+		<Content Remove="wwwroot\libs\jquery-sparkline\**" />
+		<Content Remove="wwwroot\libs\jquery.counterup\**" />
+		<Content Remove="wwwroot\libs\jquery.flot.tooltip\**" />
+		<Content Remove="wwwroot\libs\jquery.scrollto\**" />
+		<Content Remove="wwwroot\libs\minimist\**" />
+		<Content Remove="wwwroot\libs\moment\**" />
+		<Content Remove="wwwroot\libs\morris.js06\**" />
+		<Content Remove="wwwroot\libs\multiselect\**" />
+		<EmbeddedResource Remove="wwwroot\images\avatares\NewFolder\**" />
+		<EmbeddedResource Remove="wwwroot\libs\autonumeric\**" />
+		<EmbeddedResource Remove="wwwroot\libs\bootstrap-maxlength\**" />
+		<EmbeddedResource Remove="wwwroot\libs\bootstrap-select\**" />
+		<EmbeddedResource Remove="wwwroot\libs\c3\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-bs4\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-buttons-bs4\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-buttons\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-keytable-bs4\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-keytable\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-responsive-bs4\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-responsive\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-select-bs4\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net-select\**" />
+		<EmbeddedResource Remove="wwwroot\libs\datatables.net\**" />
+		<EmbeddedResource Remove="wwwroot\libs\flatpickr\**" />
+		<EmbeddedResource Remove="wwwroot\libs\flot-charts\**" />
+		<EmbeddedResource Remove="wwwroot\libs\flot-orderbars\**" />
+		<EmbeddedResource Remove="wwwroot\libs\gmaps\**" />
+		<EmbeddedResource Remove="wwwroot\libs\ion-rangeslider\**" />
+		<EmbeddedResource Remove="wwwroot\libs\jquery-datatables-checkboxes\**" />
+		<EmbeddedResource Remove="wwwroot\libs\jquery-mapael\**" />
+		<EmbeddedResource Remove="wwwroot\libs\jquery-sparkline\**" />
+		<EmbeddedResource Remove="wwwroot\libs\jquery.counterup\**" />
+		<EmbeddedResource Remove="wwwroot\libs\jquery.flot.tooltip\**" />
+		<EmbeddedResource Remove="wwwroot\libs\jquery.scrollto\**" />
+		<EmbeddedResource Remove="wwwroot\libs\minimist\**" />
+		<EmbeddedResource Remove="wwwroot\libs\moment\**" />
+		<EmbeddedResource Remove="wwwroot\libs\morris.js06\**" />
+		<EmbeddedResource Remove="wwwroot\libs\multiselect\**" />
+		<None Remove="wwwroot\images\avatares\NewFolder\**" />
+		<None Remove="wwwroot\libs\autonumeric\**" />
+		<None Remove="wwwroot\libs\bootstrap-maxlength\**" />
+		<None Remove="wwwroot\libs\bootstrap-select\**" />
+		<None Remove="wwwroot\libs\c3\**" />
+		<None Remove="wwwroot\libs\datatables.net-bs4\**" />
+		<None Remove="wwwroot\libs\datatables.net-buttons-bs4\**" />
+		<None Remove="wwwroot\libs\datatables.net-buttons\**" />
+		<None Remove="wwwroot\libs\datatables.net-keytable-bs4\**" />
+		<None Remove="wwwroot\libs\datatables.net-keytable\**" />
+		<None Remove="wwwroot\libs\datatables.net-responsive-bs4\**" />
+		<None Remove="wwwroot\libs\datatables.net-responsive\**" />
+		<None Remove="wwwroot\libs\datatables.net-select-bs4\**" />
+		<None Remove="wwwroot\libs\datatables.net-select\**" />
+		<None Remove="wwwroot\libs\datatables.net\**" />
+		<None Remove="wwwroot\libs\flatpickr\**" />
+		<None Remove="wwwroot\libs\flot-charts\**" />
+		<None Remove="wwwroot\libs\flot-orderbars\**" />
+		<None Remove="wwwroot\libs\gmaps\**" />
+		<None Remove="wwwroot\libs\ion-rangeslider\**" />
+		<None Remove="wwwroot\libs\jquery-datatables-checkboxes\**" />
+		<None Remove="wwwroot\libs\jquery-mapael\**" />
+		<None Remove="wwwroot\libs\jquery-sparkline\**" />
+		<None Remove="wwwroot\libs\jquery.counterup\**" />
+		<None Remove="wwwroot\libs\jquery.flot.tooltip\**" />
+		<None Remove="wwwroot\libs\jquery.scrollto\**" />
+		<None Remove="wwwroot\libs\minimist\**" />
+		<None Remove="wwwroot\libs\moment\**" />
+		<None Remove="wwwroot\libs\morris.js06\**" />
+		<None Remove="wwwroot\libs\multiselect\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="wwwroot\css\bootstrap\bootstrap.min.css.map" />
+		<None Include="wwwroot\css\open-iconic\FONT-LICENSE" />
+		<None Include="wwwroot\css\open-iconic\font\fonts\open-iconic.svg" />
+		<None Include="wwwroot\css\open-iconic\ICON-LICENSE" />
+		<None Include="wwwroot\css\open-iconic\README.md" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Blazored.Modal" Version="6.0.0" />
+		<PackageReference Include="Blazored.SessionStorage" Version="1.0.12" />
+		<PackageReference Include="Blazorise.Bootstrap" Version="0.9.2.4" />
+		<PackageReference Include="Blazorise.Charts" Version="0.9.2.4" />
+		<PackageReference Include="Blazorise.Icons.FontAwesome" Version="0.9.2.4" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.DataAnnotations.Validation" Version="3.2.0-rc1.20223.4" />
+		<PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+		<PackageReference Include="SixLabors.ImageSharp.Web" Version="1.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Parkner.Core\Parkner.Core.csproj" />
+		<ProjectReference Include="..\Parkner.Data\Parkner.Data.csproj" />
+		<ProjectReference Include="..\Parkner.Mobile\Parkner.Mobile\Parkner.Mobile.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Logs\" />
+		<Folder Include="wwwroot\images\avatares\empleados\" />
+		<Folder Include="wwwroot\images\avatares\clientes\" />
+		<Folder Include="wwwroot\images\avatares\responsables\" />
+		<Folder Include="wwwroot\images\avatares\usuarios\" />
+	</ItemGroup>
+
+</Project>

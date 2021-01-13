@@ -1,0 +1,15 @@
+﻿<select class="form-control" @onchange="CantidadCambio" id="mostrar">
+    @*<option value="-1" class="text-muted">Mostrar</option>*@
+    @if (Opciones != null)
+    {
+        @foreach (DesplegarOpciones opcion in Opciones)
+        {
+            <option value="@opcion.Valor">@opcion.Texto</option>
+        }
+    }
+    <option value="5" selected="selected">5</option>
+    <option value="10">10</option>
+    <option value="20">20</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+</select>

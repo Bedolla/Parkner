@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.IngresarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:control="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:converter="clr-namespace:Parkner.Mobile.Converters"
+    xmlns:core="clr-namespace:Syncfusion.XForms.Core;assembly=Syncfusion.Core.XForms"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    iOsSpecific:Page.UseSafeArea="true"
+    BackgroundColor="{DynamicResource Gray-200}"
+    NavigationPage.HasNavigationBar="False"
+    IsBusy="{Binding Ocupado}">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:IngresarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+
+            <StackLayout
+                Spacing="0"
+                VerticalOptions="Center"
+                WidthRequest="{OnPlatform Default='-1', UWP='350'}"
+                Margin="{core:OnPlatformOrientationThickness 
+                PhonePortrait='20,32',
+                PhoneLandscape='150,32',
+                TabletPortrait='200,50',
+                TabletLandscape='300,50',
+                Desktop='30'}">
+
+                <Grid RowSpacing="0" VerticalOptions="Center">
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <Image
+                        Grid.Row="0"
+                        WidthRequest="250" HeightRequest="250">
+                        <Image.Source>
+                            <OnPlatform x:TypeArguments="ImageSource">
+                                <On Platform="Android">Logo</On>
+                                <On Platform="iOS">Logo</On>
+                                <On Platform="UWP">Assets/Iconos/Logo.png</On>
+                            </OnPlatform>
+                        </Image.Source>
+                    </Image>
+
+                    <Label
+                        Grid.Row="1"
+                        FontFamily="{StaticResource Montserrat-SemiBold}"
+                        FontSize="20"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Parkner"
+                        TextColor="{DynamicResource Gray-900}" />
+
+                    <Label
+                        Grid.Row="2"
+                        Margin="0,8"
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="Tu compañero de estacionamiento"
+                        TextColor="{DynamicResource Gray-800}" />
+
+                    <border:SfBorder
+                        Grid.Row="3"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="{Binding Source={x:Reference CorreoEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessEntry
+                            x:Name="CorreoEntry"
+                            Placeholder="Correo"
+                            Keyboard="Email"
+                            PlaceholderColor="{DynamicResource Gray-700}"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding Correo}"
+                            ReturnType="Next"
+                            TextColor="{DynamicResource Gray-900}" />
+                    </border:SfBorder>
+
+                    <border:SfBorder
+                        Grid.Row="4"
+                        BackgroundColor="{DynamicResource Gray-White}"
+                        BorderColor="{Binding Source={x:Reference ClaveEntry}, Path=IsFocused, Converter={StaticResource ColorConverter}, ConverterParameter=3}"
+                        Style="{StaticResource SfBorderStyle}">
+                        <control:BorderlessEntry
+                            x:Name="ClaveEntry"
+                            IsPassword="True"
+                            Placeholder="Contraseña"
+                            PlaceholderColor="{DynamicResource Gray-700}"
+                            Style="{StaticResource EntryStyle}"
+                            Text="{Binding Clave}"
+                            TextColor="{DynamicResource Gray-900}" />
+                    </border:SfBorder>
+
+                    <Label
+                        x:Name="OlvidoClaveLabel"
+                        Grid.Row="5"
+                        Margin="0,0, 0, 16"
+                        FontFamily="{StaticResource Montserrat-SemiBold}"
+                        FontSize="12"
+                        HorizontalOptions="End"
+                        Text="¿Olvidó su contraseña?"
+                        TextColor="{DynamicResource Gray-800}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding OlvidoClaveCommand}"
+                                                  CommandParameter="{x:Reference OlvidoClaveLabel}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <buttons:SfButton
+                        Grid.Row="6"
+                        Margin="0,16"
+                        Command="{Binding IngresarCommand}"
+                        Style="{StaticResource SfButtonStyle}"
+                        HasShadow="True"
+                        Text="Ingresar">
+
+                        <!--<buttons:SfButton.Content>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="10">
+                                <xForms:SfBusyIndicator AnimationType="SingleCircle" ViewBoxWidth="16" TextSize="10" IsBusy="True" TextColor="White" WidthRequest="50"/>
+                                <Label Text="Espere..." FontSize="16" VerticalTextAlignment="Center" TextColor="White" />
+                            </StackLayout>
+                        </buttons:SfButton.Content>-->
+
+                    </buttons:SfButton>
+
+                </Grid>
+
+                <StackLayout
+                    HorizontalOptions="Center"
+                    Orientation="Horizontal"
+                    Spacing="1"
+                    VerticalOptions="End">
+
+                    <StackLayout.Padding>
+                        <OnIdiom x:TypeArguments="Thickness" Phone="0" Default="0, 48, 0, 0" />
+                    </StackLayout.Padding>
+
+                    <Label
+                        FontFamily="{StaticResource Montserrat-Medium}"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelStyle}"
+                        Text="¿No tiene una cuenta?"
+                        TextColor="{DynamicResource Gray-900}"
+                        VerticalTextAlignment="Center" />
+
+                    <buttons:SfButton
+                        Command="{Binding RegistrarCommand}"
+                        CornerRadius="4"
+                        Style="{StaticResource SfFlatButtonStyle}"
+                        Text="Registrar" />
+
+                </StackLayout>
+
+            </StackLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+
+</ContentPage>

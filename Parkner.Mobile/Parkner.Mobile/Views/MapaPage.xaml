@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:views="clr-namespace:Parkner.Mobile.Views;assembly=Parkner.Mobile"
+             xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+             xmlns:controls="clr-namespace:Parkner.Mobile.Controls;assembly=Parkner.Mobile"
+             xmlns:converters="clr-namespace:Parkner.Mobile.Converters;assembly=Parkner.Mobile"
+             x:Class="Parkner.Mobile.Views.MapaPage"
+             Title="Estacionamiento">
+
+    <ContentPage.BindingContext>
+        <views:MapaViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Resources>
+        <converters:MapClickedEventArgsToPositionConverter x:Key="PositionConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+
+            <Entry Text="{Binding Latitud}" />
+
+            <Entry Text="{Binding Longitud}" />
+
+            <controls:Mapa
+                IsShowingUser="True"
+                MapType="Street"
+                Posicion="{Binding Posision}"
+                Pines="{Binding Pines}">
+                <controls:Mapa.Behaviors>
+                    <behaviors:EventToCommandBehavior 
+                        EventName="MapClicked"
+                        Command="{Binding MapaCliqueadoCommand}"
+                        Converter="{StaticResource PositionConverter}"/>
+                </controls:Mapa.Behaviors>
+            </controls:Mapa>
+
+            <Button Text="Crear" />
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

@@ -1,0 +1,66 @@
+﻿@layout IndividualLayout
+@page "/401"
+
+<style>
+    body
+    {
+        background-color: #6658dd;
+        background-image: url("images/bg-pattern.png");
+        background-position: center;
+        background-size: cover;
+    }
+</style>
+
+<div class="col-12 mb-5 mt-5">
+    <div class="container">
+        <div class="justify-content-center row">
+            <div class="col-lg-6 col-md-8 col-xl-6">
+                <div class="bg-pattern card">
+
+                    <div class="card-body p-4">
+
+                        <div class="m-auto text-center w-75">
+                            <span class="logo-lg">
+                                <img alt="Logotipo" height="200" src="images/Logo.svg">
+                            </span>
+                        </div>
+
+                        <div class="error-text-box">
+                            <svg viewBox="0 0 600 200">
+                                <symbol id="s-text">
+                                    <text text-anchor="middle" x="50%" y="50%" dy=".35em">¡401!</text>
+                                </symbol>
+                                <use class="text" xlink:href="#s-text"></use>
+                                <use class="text" xlink:href="#s-text"></use>
+                                <use class="text" xlink:href="#s-text"></use>
+                                <use class="text" xlink:href="#s-text"></use>
+                                <use class="text" xlink:href="#s-text"></use>
+                            </svg>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="mt-0 mb-2">Acceso denegado</h3>
+                            <p class="text-muted mb-3">
+                                Permisos insuficientes para acceder a la sección a la que desea entrar.
+                            </p>
+
+                            <a href="/" class="btn btn-primary waves-effect waves-light">Ir al inicio</a>
+                        </div>
+
+                    </div>
+                </div>
+
+                @*<div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <p class="text-white-50">
+                                <span>¿Desea ir al inicio? </span>
+                                <NavLink class="ml-1 text-white" href="/">
+                                    <b>Clic aquí</b>
+                                </NavLink>
+                            </p>
+                        </div>
+                    </div>*@
+
+            </div>
+        </div>
+    </div>
+</div>

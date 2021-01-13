@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.ResponsablesEstacionamientoHorarioEditarPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    xmlns:generic="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    iOsSpecific:Page.UseSafeArea="True"
+    Title="Editar"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.BindingContext>
+        <viewModels:ResponsablesEstacionamientoHorarioEditarViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="{DynamicResource Gray-100}" Spacing="0"
+                         Padding="16,24">
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,0,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Día"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <Picker Title="Día" SelectedItem="{Binding Dia, Mode=TwoWay}">
+                    <Picker.ItemsSource>
+                        <generic:List x:TypeArguments="x:String">
+                            <x:String>Lunes</x:String>
+                            <x:String>Martes</x:String>
+                            <x:String>Miércoles</x:String>
+                            <x:String>Jueves</x:String>
+                            <x:String>Viernes</x:String>
+                            <x:String>Sábado</x:String>
+                            <x:String>Domingo</x:String>
+                        </generic:List>
+                    </Picker.ItemsSource>
+                </Picker>
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,0,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Inicio"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <TimePicker
+                    Format="hh:mm tt"
+                    Time="{Binding Inicio}" />
+
+                <Label
+                    FontFamily="{StaticResource Montserrat-Medium}"
+                    Margin="0,0,0,4"
+                    HeightRequest="18"
+                    FontSize="12"
+                    Text="Fin"
+                    TextColor="{DynamicResource Gray-800}" />
+
+                <TimePicker
+                    Format="hh:mm tt"
+                    Time="{Binding Fin}" />
+
+                <buttons:SfButton
+                    Command="{Binding EditarCommand}"
+                    Margin="0,16"
+                    Style="{StaticResource SfButtonStyle}"
+                    BackgroundColor="{StaticResource Primario}"
+                    Text="Editar"
+                    WidthRequest="200" />
+
+                <buttons:SfButton
+                    Command="{Binding BorrarCommand}"
+                    Margin="0,16"
+                    BackgroundColor="{StaticResource Peligro}"
+                    Style="{StaticResource SfButtonStyle}"
+                    HasShadow="True"
+                    Text="Borrar"
+                    WidthRequest="200" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

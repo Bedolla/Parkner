@@ -1,0 +1,133 @@
+﻿@page  "/responsables/estacionamientos/crear"
+@using Parkner.Core.Constants
+
+<!-- Titulo de la Pagina: Inicio -->
+<div class="row">
+    <div class="col-12">
+        <div class="page-title-box">
+            <div class="page-title-right">
+                <ol class="breadcrumb m-0">
+                    <li class="breadcrumb-item">Parkner</li>
+                    <li class="breadcrumb-item">Responsables</li>
+                    <li class="breadcrumb-item">Estacionamientos</li>
+                    <li class="breadcrumb-item active">Crear</li>
+                </ol>
+            </div>
+            <h4 class="page-title">Crear estacionamiento</h4>
+        </div>
+    </div>
+</div>
+<!-- Titulo de la Pagina: Fin -->
+
+<!-- Carta: Inicio -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+
+                <EditForm Model="@Modelo" OnValidSubmit="Enviar" Context="c">
+                    <DataAnnotationsValidator />
+
+                    <div class="form-group mb-3">
+                        <label for="nombre">Nombre</label>
+                        <InputText @bind-Value="Modelo.Nombre" class="form-control" id="nombre" placeholder="Nombre" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Nombre)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="descripcion">Descripción</label>
+                        <InputText @bind-Value="@Modelo.Descripcion" class="form-control" id="descripcion" placeholder="Descripción" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Descripcion)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="numero">Número</label>
+                        <InputText @bind-Value="@Modelo.Numero" class="form-control" id="numero" placeholder="Número" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Numero)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="calle">Calle</label>
+                        <InputText @bind-Value="@Modelo.Calle" class="form-control" id="calle" placeholder="Calle" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Calle)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="entrecalles">Entre calles</label>
+                        <InputText @bind-Value="@Modelo.EntreCalles" class="form-control" id="entrecalles" placeholder="Entre calles" type="text" />
+                        <ValidationMessage For="@(() => Modelo.EntreCalles)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="colonia">Colonia</label>
+                        <InputText @bind-Value="@Modelo.Colonia" class="form-control" id="colonia" placeholder="Colonia" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Colonia)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="codigopostal">Código postal</label>
+                        <InputText @bind-Value="@Modelo.CodigoPostal" class="form-control" id="codigopostal" placeholder="Código postal" type="text" />
+                        <ValidationMessage For="@(() => Modelo.CodigoPostal)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="municipio">Municipio</label>
+                        <InputText @bind-Value="@Modelo.Municipio" class="form-control" id="municipio" placeholder="Municipio" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Municipio)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="latitud">Latitud</label>
+                        <InputText @bind-Value="@Modelo.Latitud" class="form-control" id="latitud" placeholder="Latitud" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Latitud)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="longitud">Longitud</label>
+                        <InputText @bind-Value="@Modelo.Longitud" class="form-control" id="longitud" placeholder="Longitud" type="text" />
+                        <ValidationMessage For="@(() => Modelo.Longitud)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="costo">Costo por hora</label>
+                        <NumericEdit TValue="decimal" @bind-Value="Modelo.Costo" Decimals="0" Min="1" class="form-control" id="costo" placeholder="Costo por hora" />
+                        <ValidationMessage For="@(() => Modelo.Costo)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="tipo">Tipo</label>
+                        <Select TValue="string" @bind-SelectedValue="@Modelo.Tipo" class="form-control" id="tipo" placeholder="Tipo">
+                            <SelectItem Disabled="true" Value="@(String.Empty)">@("Tipos")</SelectItem>
+                            <SelectItem Value="@Tipos.Aeropuerto">@Tipos.Aeropuerto</SelectItem>
+                            <SelectItem Value="@Tipos.CentroComercial">@Tipos.CentroComercial</SelectItem>
+                            <SelectItem Value="@Tipos.Cochera">@Tipos.Cochera</SelectItem>
+                            <SelectItem Value="@Tipos.EstacionTrenes">@Tipos.EstacionTrenes</SelectItem>
+                            <SelectItem Value="@Tipos.Feria">@Tipos.Feria</SelectItem>
+                            <SelectItem Value="@Tipos.Puerto">@Tipos.Puerto</SelectItem>
+                            <SelectItem Value="@Tipos.Terreno">@Tipos.Terreno</SelectItem>
+                        </Select>
+                        <ValidationMessage For="@(() => Modelo.Tipo)" />
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label for="foto">Foto</label>
+                        <InputPhoto Id="foto" @bind-Value="Modelo.Foto" @bind-FotoMemoria="@FotoMemoria" />
+                        <ValidationMessage For="@(() => Modelo.Foto)" />
+                    </div>
+
+                    <div class="form-group mb-0 text-center">
+                        <div class="row">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-1 mb-sm-1 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-danger mr-md-1 mr-lg-1 mr-xl-1" type="reset" @onclick="Cancelar"> Cancelar </button>
+                            </div>
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12 mb-3 mb-sm-3 mb-md-0 mb-lg-0 mb-xl-0">
+                                <button class="btn btn-block btn-success ml-md-1 ml-lg-1 ml-xl-1" type="submit"> Crear </button>
+                            </div>
+                        </div>
+                    </div>
+                </EditForm>
+
+            </div>
+        </div>
+    </div>
+</div>

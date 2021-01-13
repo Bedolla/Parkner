@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+             x:Class="Parkner.Mobile.Views.RegistrarOriginalPage"
+             Title="Registrarse">
+
+    <ContentPage.Resources>
+        <Style x:Key="EtiquetaInformacion" TargetType="Label">
+            <Setter Property="Margin" Value="2,2,2,5" />
+            <Setter Property="VerticalOptions" Value="Center" />
+            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewModels:RegistrarOriginalViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+
+        <StackLayout Style="{StaticResource Formulario}">
+
+            <Entry Text="{Binding Cliente.Id}"
+                   IsVisible="False" />
+
+            <Label Text="Nombre(s)" />
+            <Entry Text="{Binding Cliente.Nombre}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Apellido(s)" />
+            <Entry Text="{Binding Cliente.Apellido}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Correo" />
+            <Entry Text="{Binding Cliente.Correo}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Email" />
+
+            <Label Text="Contraseña" />
+            <Entry Text="{Binding Cliente.Clave}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Foto" />
+            <Entry Text="{Binding Cliente.Foto}"
+                   Style="{StaticResource CajasTextoDatos}"
+                   Keyboard="Text" />
+
+            <Label Text="Foto" />
+
+            <Image WidthRequest="150" HeightRequest="150" Source="{Binding Imagen}" />
+
+            <Button Text="Buscar..."
+                    Command="{Binding SubirFotoCommand}"
+                    IsEnabled="{Binding Habilitado}" />
+
+            <Label Text="Tarea completada"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="CenterAndExpand"
+                   IsVisible="{Binding EstadoSubida}"  />
+
+            <Label Text="{Binding Informacion}"
+                   Style="{StaticResource EtiquetaInformacion}" />
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Grid.Column="0" Text="Crear"
+                        Style="{StaticResource BotonEditar}"
+                        Command="{Binding GuardarCommand}" />
+
+                <Button Grid.Column="1" Text="Limpiar"
+                        Style="{StaticResource BotonLimpiar}"
+                        Command="{Binding LimpiarCommand}" />
+            </Grid>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

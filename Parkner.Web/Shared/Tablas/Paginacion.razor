@@ -1,0 +1,8 @@
+﻿<ul class="pagination pagination-rounded justify-content-end my-2">
+    @foreach (PaginacionEnlace enlace in Enlaces)
+    {
+        <li @onclick="@(() => ActualizarPaginaActual(enlace))" class="mano page-item @(enlace.Habilitado ? null : "disabled") @(enlace.Activo ? "active" : null)">
+            <span class="page-link">@enlace.Texto</span>
+        </li>
+    }
+</ul>

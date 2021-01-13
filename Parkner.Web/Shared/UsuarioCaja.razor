@@ -1,0 +1,28 @@
+﻿@using Parkner.Core.Constants
+<!-- Usuario : Inicio -->
+<div class="user-box text-center">
+    <img src="@($"{Uris.Fotos}{UsuarioState.Foto}")" alt="Foto" title="Foto de @($"{UsuarioState.Nombre} {UsuarioState.Apellido}")"
+         class="rounded-circle avatar-md">
+    <div class="dropdown">
+        <a href="javascript: void(0);" class="text-dark dropdown-toggle h5 mt-2 mb-1 d-block"
+           data-toggle="dropdown">
+            @($"{UsuarioState.Nombre} {UsuarioState.Apellido}")
+        </a>
+        <div class="dropdown-menu user-pro-dropdown">
+
+            <!-- item-->
+            <a href="@($"/perfil/{UsuarioState.Id}")" class="dropdown-item notify-item">
+                <i class="fe-user"></i>
+                <span>Perfil</span>
+            </a>
+
+            <!-- Salir -->
+            <NavLink class="dropdown-item notify-item" href="/salir">
+                <i class="fe-log-out mr-1"></i>
+                <span>Salir</span>
+            </NavLink>
+        </div>
+    </div>
+    <p class="text-muted">@UsuarioState.Correo</p>
+</div>
+<!-- Usuario : Fin -->

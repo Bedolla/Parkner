@@ -1,0 +1,38 @@
+﻿<div class="modal-backdrop fade show"></div>
+<div class="modal fade show d-block" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title ">@Titulo</h5>
+                <button type="button" @onclick="Cancel" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <i class="dripicons-warning h1 text-danger"></i>
+
+                <p>@Mensaje</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" @onclick="Close">Eliminar</button>
+                <button type="button" class="btn btn-primary" @onclick="Cancel">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    [Parameter]
+    public string Titulo { get; set; }
+
+    [Parameter]
+    public string Mensaje { get; set; }
+
+    [CascadingParameter]
+    BlazoredModalInstance BlazoredModal { get; set; }
+
+    async void Close() => await BlazoredModal.CloseAsync(ModalResult.Ok(true));
+    async void Cancel() => await BlazoredModal.CloseAsync(ModalResult.Cancel());
+
+}

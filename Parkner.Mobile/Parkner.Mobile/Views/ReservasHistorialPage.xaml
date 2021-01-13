@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage
+    x:Class="Parkner.Mobile.Views.ReservasHistorialPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:controls="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:converter="clr-namespace:Parkner.Mobile.Converters"
+    xmlns:viewModels="clr-namespace:Parkner.Mobile.ViewModels;assembly=Parkner.Mobile"
+    xmlns:iOsSpecific="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:behaviors="clr-namespace:Parkner.Mobile.Behaviors;assembly=Parkner.Mobile"
+    xmlns:xForms="clr-namespace:Syncfusion.ListView.XForms;assembly=Syncfusion.SfListView.XForms"
+    xmlns:dataSource="clr-namespace:Syncfusion.DataSource;assembly=Syncfusion.DataSource.Portable"
+    iOsSpecific:Page.UseSafeArea="True"
+    Title="Historial"
+    BackgroundColor="{DynamicResource Gray-100}"
+    NavigationPage.HasNavigationBar="True">
+
+    <ContentPage.BindingContext>
+        <viewModels:ReservasHistorialViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:BooleanToColorConverter x:Key="ColorConverter" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <behaviors:EventToCommandBehavior EventName="Appearing" Command="{Binding CablearCommand}" />
+        <behaviors:EventToCommandBehavior EventName="Disappearing" Command="{Binding DescablearCommand}" />
+    </ContentPage.Behaviors>
+
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="StartAndExpand" BackgroundColor="{DynamicResource Gray-100}" Spacing="0"
+                     Padding="16,24">
+
+            <Label
+                Margin="0, 0, 0, 6"
+                HorizontalTextAlignment="Start"
+                FontFamily="{DynamicResource Montserrat-SemiBold}"
+                Style="{StaticResource LabelStyle}"
+                FontSize="20"
+                Text="Finalizadas (Últimos 30 días)"
+                TextColor="{DynamicResource Gray-900}" />
+
+            <xForms:SfListView
+                Orientation="Vertical"
+                SelectionMode="None"
+                BackgroundColor="Transparent"
+                VerticalOptions="Start"
+                AllowGroupExpandCollapse="True"
+                IsStickyGroupHeader="True"
+                AutoFitMode="Height"
+                IsScrollBarVisible="False"
+                TapCommand="{Binding TapCommand}"
+                ItemsSource="{Binding Reservas}">
+
+                <xForms:SfListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <Grid BackgroundColor="{StaticResource Primario}" HeightRequest="30">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Start"
+                                         VerticalOptions="Center">
+                                <Label Text="{Binding Key}"
+                                       TextColor="White"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       VerticalOptions="Center" HorizontalOptions="Start" Margin="6,0"/>
+                                <!--<Label Text="Estacionamiento" TextColor="White" />-->
+                            </StackLayout>
+                            <!--<StackLayout Orientation="Horizontal" Grid.Column="1"
+                                             HorizontalOptions="EndAndExpand" VerticalOptions="Center">
+                                    <Label Text="{Binding Count}" TextColor="White" />
+                                    <Label Text="reserva(s)" TextColor="White" />
+                                </StackLayout>-->
+                        </Grid>
+                    </DataTemplate>
+                </xForms:SfListView.GroupHeaderTemplate>
+
+                <xForms:SfListView.DataSource>
+                    <dataSource:DataSource AutoExpandGroups="False">
+                        <dataSource:DataSource.SortDescriptors>
+                            <dataSource:SortDescriptor PropertyName="Inicio" Direction="Ascending"/>
+                        </dataSource:DataSource.SortDescriptors>
+                        <dataSource:DataSource.GroupDescriptors>
+                            <dataSource:GroupDescriptor PropertyName="Estacionamiento.Nombre" />
+                        </dataSource:DataSource.GroupDescriptors>
+                    </dataSource:DataSource>
+                </xForms:SfListView.DataSource>
+
+                <xForms:SfListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <Grid
+                                    BackgroundColor="{DynamicResource Gray-White}"
+                                    RowSpacing="4"
+                                    VerticalOptions="Start">
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <BoxView
+                                        Grid.Row="0"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Column="0"
+                                        HeightRequest="1"
+                                        Style="{StaticResource BoxViewStyle}" />
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        Margin="16,4,16,0"
+                                        FontFamily="{StaticResource Montserrat-Medium}"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        FontSize="16"
+                                        Text="Inicio" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Margin="16,4,16,0"
+                                        FontFamily="{StaticResource Montserrat-Medium}"
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        FontSize="16"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="{Binding Inicio, StringFormat='{0:dd/MM/yyyy h:mm tt}'}" />
+
+                                    <Label
+                                        Grid.Row="2" Grid.Column="0"
+                                        FontFamily="{DynamicResource Montserrat-Medium}"
+                                        FontSize="16"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="Fin" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontFamily="{DynamicResource Montserrat-Medium}"
+                                        FontSize="16"
+                                        HorizontalOptions="EndAndExpand"
+                                        HorizontalTextAlignment="End"
+                                        Style="{StaticResource PriceLabelStyle}"
+                                        Text="{Binding Fin, StringFormat='{0:dd/MM/yyyy h:mm tt}'}" />
+
+                                    <BoxView
+                                        Grid.Row="3"
+                                        Grid.ColumnSpan="2"
+                                        Grid.Column="0"
+                                        HeightRequest="0"
+                                        Style="{StaticResource BoxViewStyle}" />
+
+                                </Grid>
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </xForms:SfListView.ItemTemplate>
+            </xForms:SfListView>
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

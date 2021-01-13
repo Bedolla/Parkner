@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<ContentView
+    x:Class="Parkner.Mobile.Views.CorreoEntryControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:border="clr-namespace:Syncfusion.XForms.Border;assembly=Syncfusion.Core.XForms"
+    xmlns:control="clr-namespace:Parkner.Mobile.Controls"
+    xmlns:converter="clr-namespace:Parkner.Mobile.Converters">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converter:StringToBooleanConverter x:Key="StringToBooleanConverter" />
+            <converter:ErrorValidationColorConverter x:Key="ErrorValidationColorConverter" PageVariantParameter="1" />
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Estilos.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <ContentView.Content>
+        <StackLayout>
+            <border:SfBorder
+                BackgroundColor="{DynamicResource Gray-White}"
+                BorderColor="{Binding Path=IsFocused, Source={x:Reference CorreoEntry}, Converter={x:StaticResource ErrorValidationColorConverter}, ConverterParameter={x:Reference CorreoEntry}}"
+                Style="{StaticResource SfBorderStyle}">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <control:BorderlessEntry
+                        x:Name="CorreoEntry"
+                        Placeholder="Correo" Keyboard="Email"
+                        PlaceholderColor="{DynamicResource Gray-700}"
+                        Style="{StaticResource EntryStyle}"
+                        Text="{Binding Correo}"
+                        TextColor="{DynamicResource Gray-900}" />
+
+                    <Label
+                        Grid.Column="0" Margin="15,0"
+                        FontFamily="{StaticResource FontIcons}"
+                        FontSize="18"
+                        HorizontalOptions="EndAndExpand"
+                        HorizontalTextAlignment="End"
+                        IsVisible="{Binding Path=IsVisible, Source={x:Reference ValidationLabel}}"
+                        Text="&#xe707;"
+                        TextColor="{DynamicResource Red}"
+                        VerticalOptions="Center" />
+
+
+                </Grid>
+            </border:SfBorder>
+
+            <Label
+                x:Name="ValidationLabel"
+                Margin="15,-5,0,0"
+                FontSize="12"
+                IsVisible="{Binding Path=IsFocused, Source={x:Reference CorreoEntry}, Converter={StaticResource StringToBooleanConverter}, ConverterParameter={x:Reference CorreoEntry}}"
+                Text="Ingrese un correo válido"
+                TextColor="{DynamicResource Red}"
+                VerticalOptions="FillAndExpand" />
+
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
