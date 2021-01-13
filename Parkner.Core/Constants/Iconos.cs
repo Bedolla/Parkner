@@ -1,0 +1,8 @@
+﻿namespace Parkner.Core.Constants
+{
+    public static class Iconos
+    {
+        public const string Menu = "iVBORw0KGgoAAAANSUhEUgAAAFQAAABUCAYAAAAcaxDBAAAACXBIWXMAAAJsAAACbAHIADhpAAAA90lEQVR4nO3Z0QnDMBAFwXNI4UlncWUK7mFAIHY6uMX68bvWWhPnVUuroFhBsYJiBcUKihUUKyhWUKygWEGxgmIFxa6Z6XcT1BeKFRQrKFZQrKBYQbGCYgXF3jPzPeqizdrlsZ48VlCsoFhBsYJiBcUKihUUKyhWUKygWEGxZ0b+HXXRZu3yWE8eKyhWUKygWEGxgmIFxZ4Z+T7qos2akbGePFZQrKBYQbGCYgXFCooVFCsoVlCsoFhBsWf1/Bx10WbNyFhPHisoVlCsoFhBsYJiBcUKijUjY32hWEGxgmIFxQqKFRQrKFZQrKBYQbGCYgXFCirNzB/kvxIXqdG/XwAAAABJRU5ErkJggg==";
+        
+    }
+}
